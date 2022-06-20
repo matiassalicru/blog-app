@@ -5,8 +5,12 @@ import { SCPostContainer } from './styles'
 
 // Types
 import { PostTypes } from './types'
+interface TypePost {
+  post: PostTypes
+}
 
-export const Post: FunctionComponent = () => {
+export const Post: FunctionComponent<TypePost> = ({ post }) => {
+  console.log('post', post)
   return (
     <SCPostContainer>
       <h1>Title</h1>

@@ -2,14 +2,24 @@
 import React, { FunctionComponent, useState } from 'react'
 import { Post } from '../Post/Post'
 import { PostTypes } from '../Post/types'
-import { SCDashboardContainer } from './styles'
+import { SCDashboardContainer, SCDashboardTitle } from './styles'
 
 export const Dashboard: FunctionComponent = () => {
-  const [posts, setPosts] = useState<PostTypes[]>([])
+  const [posts, setPosts] = useState<PostTypes[]>([
+    {
+      _id: 'asd',
+      date: new Date(),
+      user_id: 123,
+      title: 'first post',
+      text: 'lorem ipsum',
+    },
+  ])
 
   return (
     <SCDashboardContainer>
-      {!!posts.length && posts.map((post) => <Post />)}
+      <SCDashboardTitle>BlogApp</SCDashboardTitle>
+      {!!posts.length &&
+        posts.map((post) => <Post key={post._id} post={post} />)}
     </SCDashboardContainer>
   )
 }
