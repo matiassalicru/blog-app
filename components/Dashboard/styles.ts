@@ -9,6 +9,5 @@ export const SCDashboardContainer = styled.div`
 `
 export const SCDashboardTitle = styled.h1`
   color: mediumslateblue;
-  font-weight: 400;
   font-size: 2rem;
 `
