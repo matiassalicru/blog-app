@@ -5,6 +5,8 @@ import Head from 'next/head'
 // Components
 import { Dashboard } from '../components/Dashboard/Dashboard'
 import BasicLayout from '../layout/Basic'
+import { Nav } from 'components/Nav/Nav'
+import { SCIndexMain } from 'styles'
 
 const Home: NextPage<any> = ({ data }) => {
   return (
@@ -15,9 +17,10 @@ const Home: NextPage<any> = ({ data }) => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <main>
+      <SCIndexMain>
+        <Nav />
         <Dashboard data={data} />
-      </main>
+      </SCIndexMain>
     </BasicLayout>
   )
 }
