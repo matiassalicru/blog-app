@@ -7,8 +7,6 @@ import { SCDashboardContainer, SCDashboardTitle } from './styles'
 export const Dashboard: FunctionComponent<any> = ({ data }) => {
   const [posts, setPosts] = useState<PostTypes[]>(data)
 
-  console.log('data', data)
-
   return (
     <SCDashboardContainer>
       <SCDashboardTitle>BlogApp</SCDashboardTitle>
