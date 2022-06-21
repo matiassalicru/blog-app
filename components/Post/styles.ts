@@ -5,9 +5,8 @@ export const SCPostContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid;
-  border-color: #f1f1f1;
-  border-radius: 10px;
+  border-bottom: 2px solid;
+  border-color: #fca252;
   width: 80%;
   margin: 10px 0;
 `
