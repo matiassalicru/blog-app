@@ -13,8 +13,8 @@ export const Post: FunctionComponent<TypePost> = ({ post }) => {
   const { title, text } = post
   return (
     <SCPostContainer>
-      <SCPostTitle>Title</SCPostTitle>
-      <SCPostText>text</SCPostText>
+      <SCPostTitle>{title}</SCPostTitle>
+      <SCPostText>{text}</SCPostText>
     </SCPostContainer>
   )
 }
