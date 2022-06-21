@@ -12,8 +12,18 @@ export const SCPostContainer = styled.div`
 `
 
 export const SCPostTitle = styled.h1`
+  width: 100%;
+  text-align: start;
+  cursor: pointer;
 `
 
 export const SCPostText = styled.p`
   color: rebeccapurple;
+  font-size: 1.2rem;
+  height: 50px;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
 `
