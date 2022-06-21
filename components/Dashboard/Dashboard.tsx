@@ -4,21 +4,15 @@ import { Post } from '../Post/Post'
 import { PostTypes } from '../Post/types'
 import { SCDashboardContainer, SCDashboardTitle } from './styles'
 
-export const Dashboard: FunctionComponent = () => {
-  const [posts, setPosts] = useState<PostTypes[]>([
-    {
-      _id: 'asd',
-      date: new Date(),
-      user_id: 123,
-      title: 'first post',
-      text: 'lorem ipsum',
-    },
-  ])
+export const Dashboard: FunctionComponent<any> = ({ data }) => {
+  const [posts, setPosts] = useState<PostTypes[]>(data)
+
+  console.log('data', data)
 
   return (
     <SCDashboardContainer>
       <SCDashboardTitle>BlogApp</SCDashboardTitle>
-      {!!posts.length &&
+      {!!posts?.length &&
         posts.map((post) => <Post key={post._id} post={post} />)}
     </SCDashboardContainer>
   )

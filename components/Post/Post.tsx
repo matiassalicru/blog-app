@@ -10,7 +10,6 @@ interface TypePost {
 }
 
 export const Post: FunctionComponent<TypePost> = ({ post }) => {
-  console.log('post', post)
   return (
     <SCPostContainer>
       <h1>Title</h1>

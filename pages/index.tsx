@@ -1,10 +1,12 @@
+import { useState } from 'react'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
+
+// Components
 import { Dashboard } from '../components/Dashboard/Dashboard'
 import BasicLayout from '../layout/Basic'
 
-const Home: NextPage = () => {
+const Home: NextPage<any> = ({ data }) => {
   return (
     <BasicLayout>
       <Head>
@@ -14,10 +16,20 @@ const Home: NextPage = () => {
       </Head>
 
       <main>
-        <Dashboard />
+        <Dashboard data={data} />
       </main>
     </BasicLayout>
   )
+}
+
+export const getStaticProps = async () => {
+  const res = await fetch('http://localhost:3000/api/posts')
+  const json = await res.json()
+  return {
+    props: {
+      data: json,
+    },
+  }
 }
 
 export default Home
