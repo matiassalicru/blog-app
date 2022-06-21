@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 
 // Styles
-import { SCPostContainer } from './styles'
+import { SCPostContainer, SCPostTitle, SCPostText } from './styles'
 
 // Types
 import { PostTypes } from './types'
@@ -10,10 +10,11 @@ interface TypePost {
 }
 
 export const Post: FunctionComponent<TypePost> = ({ post }) => {
+  const { title, text } = post
   return (
     <SCPostContainer>
-      <h1>Title</h1>
-      <p>text</p>
+      <SCPostTitle>Title</SCPostTitle>
+      <SCPostText>text</SCPostText>
     </SCPostContainer>
   )
 }
