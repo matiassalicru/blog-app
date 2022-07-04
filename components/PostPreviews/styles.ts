@@ -8,7 +8,15 @@ export const SCPostContainer = styled.div`
   border-bottom: 2px solid;
   border-color: #fca252;
   width: 80%;
-  margin: 10px 0;
+  margin: 20px 0;
+  cursor: pointer;
+  border-bottom-right-radius: 10px;
+  transition: all .6s;
+
+  &:hover {
+    box-shadow: 7px 7px 10px lightslategray;
+    transform: translate(10px)
+  }
 `
 
 export const SCPostTitle = styled.h1`
