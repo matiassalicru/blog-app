@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-key */
 import React, { FunctionComponent, useState } from 'react'
-import { Post } from '../Post/Post'
-import { PostTypes } from '../Post/types'
+import { PostPreview } from '../PostPreviews/PostPreview'
+import { PostTypes } from '../PostPreviews/types'
 import { SCDashboardContainer } from './styles'
 
 export const Dashboard: FunctionComponent<any> = ({ data }) => {
@@ -10,7 +10,7 @@ export const Dashboard: FunctionComponent<any> = ({ data }) => {
   return (
     <SCDashboardContainer>
       {!!posts?.length &&
-        posts.map((post) => <Post key={post._id} post={post} />)}
+        posts.map((post) => <PostPreview key={post._id} post={post} />)}
     </SCDashboardContainer>
   )
 }
