@@ -11,9 +11,9 @@ interface TypePost {
 }
 
 export const PostPreview: FunctionComponent<TypePost> = ({ post }) => {
-  const { title, text, _id } = post
+  const { title, text, id } = post
   return (
-    <Link href={`/post/${_id}`}>
+    <Link href={`/post/${id}`}>
       <SCPostContainer>
         <SCPostTitle>{title}</SCPostTitle>
         <SCPostText>{text}</SCPostText>

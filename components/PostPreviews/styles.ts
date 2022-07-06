@@ -5,17 +5,16 @@ export const SCPostContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-bottom: 2px solid;
   border-color: #fca252;
   width: 80%;
-  margin: 20px 0;
+  padding: 10px;
   cursor: pointer;
-  border-bottom-right-radius: 10px;
+  border-radius: 5px;
   transition: all .6s;
 
   &:hover {
     box-shadow: 7px 7px 10px lightslategray;
-    transform: translate(10px)
+    /* transform: translate(10px) */
   }
 `
 
@@ -26,7 +25,6 @@ export const SCPostTitle = styled.h1`
 `
 
 export const SCPostText = styled.p`
-  color: rebeccapurple;
   font-size: 1.2rem;
   height: 50px;
   width: 100%;
@@ -35,3 +33,4 @@ export const SCPostText = styled.p`
   text-overflow: ellipsis;
   margin: 0;
 `
+
