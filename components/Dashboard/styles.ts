@@ -14,3 +14,10 @@ export const SCDashboardTitle = styled.h1`
   color: mediumslateblue;
   font-size: 2rem;
 `
+
+export const SCSeparator = styled.div`
+  width: 80%;
+  height: 2px;
+  background-color: #fca252;
+  margin: 0;
+`
