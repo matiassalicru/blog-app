@@ -7,13 +7,14 @@ export const SCPostContainer = styled.div`
   align-items: center;
   border-color: #fca252;
   width: 80%;
-  padding: 10px;
+  padding: 15px;
+  margin: 10px 0;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 10px;
   transition: all .6s;
 
   &:hover {
-    box-shadow: 7px 7px 10px lightslategray;
+    box-shadow: 3px 3px 10px #c2c2c2;
     /* transform: translate(10px) */
   }
 `
