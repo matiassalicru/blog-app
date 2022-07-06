@@ -1,8 +1,11 @@
+import { Button } from 'components/Button/Button'
+import { Nav } from 'components/Nav/Nav'
 import { PostTypes } from 'components/PostPreviews/types'
+import BasicLayout from 'layout/Basic'
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import React, { SetStateAction, useEffect, useState } from 'react'
-import { SCPostContent } from './styles'
+import { SCPostContent, SCPostTitle, SCPostText } from './styles'
 
 interface PostType {
   posts: PostTypes[]
@@ -20,10 +23,13 @@ const Post: NextPage<PostType> = ({ posts }) => {
   }, [postId, posts])
 
   return (
-    <SCPostContent>
-      <h1>{post?.title}</h1>
-      <p>{post?.text}</p>
-    </SCPostContent>
+    <>
+      <SCPostContent>
+        <Button onClick={() => {}} text='Back' />
+        <SCPostTitle>{post?.title}</SCPostTitle>
+        <SCPostText>{post?.text}</SCPostText>
+      </SCPostContent>
+    </>
   )
 }
 
