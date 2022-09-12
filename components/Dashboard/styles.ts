@@ -25,3 +25,12 @@ export const SCSeparator = styled.div`
   background-color: ${PRIMARY_COLOR};
   margin: 0;
 `
+
+export const SCNavDashboard = styled.div`
+  display: flex;
+  width: auto;
+  align-items: center;
+  justify-content: end;
+  width: 100%;
+  margin: 10px 0;
+`

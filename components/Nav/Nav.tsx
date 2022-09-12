@@ -5,7 +5,7 @@ import { SCNavContainer, SCNavTitle } from './styles'
 export const Nav = () => {
   return (
     <SCNavContainer>
-      <SCNavTitle>Matías Salicrú</SCNavTitle>
+      <SCNavTitle>Matías Salicrú posts</SCNavTitle>
     </SCNavContainer>
   )
 }

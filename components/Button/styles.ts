@@ -14,6 +14,10 @@ export const SCButtonComponent = styled.button`
   letter-spacing: 2px;
   transition: transform 0.2s, box-shadow 0.2s;
 
+  &:hover {
+    transform: translate(1px, 1px);
+  }
+
   &:active {
     transform: translate(3px, 3px);
     box-shadow: 0px 0px ${SECONDARY_COLOR};
