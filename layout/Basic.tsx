@@ -4,7 +4,7 @@ export const GlobalStyle = createGlobalStyle`
     // this is the shared style
   html {
     box-sizing: border-box;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: 'Maven pro';
     background-color: #d5dae5;
   }
 
