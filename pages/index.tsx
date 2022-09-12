@@ -6,6 +6,7 @@ import Head from 'next/head'
 import { Dashboard } from '../components/Dashboard/Dashboard'
 import { Nav } from 'components/Nav/Nav'
 import { SCIndexMain } from 'styles'
+import { Navbar } from 'components/Navbar/Navbar'
 
 const Home: NextPage<any> = ({ data }) => {
   return (
@@ -17,7 +18,7 @@ const Home: NextPage<any> = ({ data }) => {
       </Head>
 
       <SCIndexMain>
-        <Nav />
+        <Navbar />
         <Dashboard data={data} />
       </SCIndexMain>
     </>

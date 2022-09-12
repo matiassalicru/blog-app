@@ -1,12 +1,12 @@
 import { createGlobalStyle } from 'styled-components'
-import { PRIMARY_COLOR } from 'styles/constants'
+import { BACKGROUND_COLOR, PRIMARY_COLOR } from 'styles/constants'
 
 export const GlobalStyle = createGlobalStyle`
     // this is the shared style
   html {
     box-sizing: border-box;
     font-family: 'Maven pro';
-    background-color: #d5dae5;
+    background-color: ${BACKGROUND_COLOR};
     color: ${PRIMARY_COLOR};
   }
 
