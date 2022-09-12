@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { ACCENT_COLOR } from "styles/constants";
 
 export const SCDashboardContainer = styled.div`
+  position: relative;
   width: 60%;
   background-color: #f1f1f1;
   display: flex;
@@ -14,9 +15,10 @@ export const SCDashboardContainer = styled.div`
   margin: 50px 100px;
   padding: 20px;
 `
-export const SCDashboardTitle = styled.h1`
-  color: mediumslateblue;
-  font-size: 2rem;
+export const SCButtonContainer = styled.h1`
+  position: absolute;
+  top: 0px;
+  right: 30px;
 `
 
 export const SCSeparator = styled.div`
@@ -30,7 +32,12 @@ export const SCNavDashboard = styled.div`
   display: flex;
   width: auto;
   align-items: center;
-  justify-content: end;
+  justify-content: center;
   width: 100%;
   margin: 10px 0;
 `
+
+export const SCDashTitle = styled.h1`
+  font-size: 42px;
+`
+
