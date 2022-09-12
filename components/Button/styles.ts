@@ -1,12 +1,12 @@
 import styled from "styled-components";
-import { PRIMARY_COLOR, SECONDARY_COLOR } from "styles/constants";
+import { ACCENT_COLOR, SECONDARY_COLOR } from "styles/constants";
 
 export const SCButtonComponent = styled.button`
   border: 1px solid ${SECONDARY_COLOR};
   border-radius: 8px;
   padding: 10px 20px;
   text-align: center;
-  background-color: ${PRIMARY_COLOR};
+  background-color: ${ACCENT_COLOR};
   cursor: pointer;
   width: fit-content;
   box-shadow: 2px 2px 5px ${SECONDARY_COLOR};

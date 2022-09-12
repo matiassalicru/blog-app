@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 // Constants
-import { PRIMARY_COLOR } from "styles/constants";
+import { ACCENT_COLOR } from "styles/constants";
 
 export const SCDashboardContainer = styled.div`
   width: 60%;
@@ -22,7 +22,7 @@ export const SCDashboardTitle = styled.h1`
 export const SCSeparator = styled.div`
   width: 80%;
   height: 2px;
-  background-color: ${PRIMARY_COLOR};
+  background-color: ${ACCENT_COLOR};
   margin: 0;
 `
 
