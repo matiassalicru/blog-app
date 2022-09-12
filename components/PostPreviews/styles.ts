@@ -15,7 +15,6 @@ export const SCPostContainer = styled.div`
 
   &:hover {
     box-shadow: 0px 0px 10px #c2c2c2;
-    /* transform: translate(10px) */
   }
 `
 
