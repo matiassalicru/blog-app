@@ -1,10 +1,13 @@
 import { Button } from 'components/Button/Button'
 import { Nav } from 'components/Nav/Nav'
-import { PostTypes } from 'components/PostPreviews/types'
-import BasicLayout from 'layout/Basic'
+import React, { useEffect, useState } from 'react'
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
-import React, { SetStateAction, useEffect, useState } from 'react'
+
+// Types
+import { PostTypes } from 'components/PostPreviews/types'
+
+// Styles
 import { SCPostContent, SCPostTitle, SCPostText } from './styles'
 
 interface PostType {
@@ -12,10 +15,13 @@ interface PostType {
 }
 
 const Post: NextPage<PostType> = ({ posts }) => {
-  const { query } = useRouter()
+  const [post, setPost] = useState<PostTypes>()
+  const { query, back } = useRouter()
   const { post: postId } = query
 
-  const [post, setPost] = useState<PostTypes>()
+  const onBackButtonClick = () => {
+    back()
+  }
 
   useEffect(() => {
     const thisPost = posts?.find((post) => post.id.toString() === postId)
@@ -25,7 +31,7 @@ const Post: NextPage<PostType> = ({ posts }) => {
   return (
     <>
       <SCPostContent>
-        <Button onClick={() => {}} text='Back' />
+        <Button onClick={onBackButtonClick} text='Back' />
         <SCPostTitle>{post?.title}</SCPostTitle>
         <SCPostText>{post?.text}</SCPostText>
       </SCPostContent>

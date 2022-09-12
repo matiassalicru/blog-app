@@ -18,15 +18,16 @@ handler.get(async (req, res) => {
   res.json(arr)
 })
 
-// handler.post(async (req, res) => {
-//   let data = req.body
-//   data = JSON.parse(data)
-//   data.date = new Date(data.date)
-//   let doc = await req.db
-//     .collection('Daily')
-//     .updateOne({ date: new Date(data.date) }, { $set: data }, { upsert: true })
+handler.post(async (req, res) => {
+  let data = req.body
+  data = JSON.parse(data)
+  data.date = new Date(data.date)
+  let doc = await req.db
+    .collection('Daily')
+    .updateOne({ date: new Date(data.date) }, { $set: data }, { upsert: true })
 
-//   res.json({ message: 'ok' })
-// })
+  console.log('doc', doc)
+  res.json({ message: 'ok' })
+})
 
 export default handler

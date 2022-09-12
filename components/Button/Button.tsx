@@ -7,9 +7,5 @@ interface ButtonTypes {
 }
 
 export const Button: FunctionComponent<ButtonTypes> = ({ onClick, text }) => {
-  return (
-    <>
-      <SCButtonComponent onClick={onClick}>{text}</SCButtonComponent>
-    </>
-  )
+  return <SCButtonComponent onClick={onClick}>{text}</SCButtonComponent>
 }
