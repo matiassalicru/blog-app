@@ -14,14 +14,14 @@ const CreatePost: NextPage = () => {
   const router = useRouter()
 
   const submitPost = () => {
-    
+
   }
 
   return (
     <SCNewPostContainer>
       <Button onClick={() => router.back()} text='Volver' />
-      <Input type='text' placeholder='Set a shiny title' />
-      <Textarea placeholder='Write here' />
+      <Input type='text' placeholder='Write a shiny title' />
+      <Textarea placeholder='Write your thoughts here' />
       <SCButtonArea>
         <Button onClick={() => true} text='POST' />
       </SCButtonArea>

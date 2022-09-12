@@ -8,5 +8,4 @@ export const SCInputComponent = styled.input`
   border: 1px solid ${SECONDARY_COLOR};
   margin: 20px 0;
   font-size: 18px;
-  color: #2c2c22;
 `
