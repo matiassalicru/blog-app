@@ -11,10 +11,10 @@ export const SCPostContainer = styled.div`
   margin: 10px 0;
   cursor: pointer;
   border-radius: 10px;
-  transition: all .6s;
+  transition: all .3s;
 
   &:hover {
-    box-shadow: 3px 3px 10px #c2c2c2;
+    box-shadow: 0px 0px 10px #c2c2c2;
     /* transform: translate(10px) */
   }
 `
