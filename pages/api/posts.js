@@ -7,7 +7,7 @@ handler.use(middleware)
 
 handler.get(async (req, res) => {
   let cursor = {}
-  cursor = await req.db.collection(process.env.POSTS_COLLECTION_NAME).find()
+  cursor = await req.db.collection(process.env.POSTS_COLLECTION_NAME).find().sort({ date: -1 })
   const arr = []
 
   while (await cursor.hasNext()) {
@@ -19,15 +19,14 @@ handler.get(async (req, res) => {
 })
 
 handler.post(async (req, res) => {
-  let data = req.body
-  data = JSON.parse(data)
-  data.date = new Date(data.date)
-  let doc = await req.db
-    .collection('Daily')
-    .updateOne({ date: new Date(data.date) }, { $set: data }, { upsert: true })
-
-  console.log('doc', doc)
-  res.json({ message: 'ok' })
+  let data = req.body.post
+  req.db
+    .collection(process.env.POSTS_COLLECTION_NAME)
+    .insertOne(data)
+    .then((result) => res.status(201).json(result))
+    .catch((err) => {
+      res.status(500).json({ err: 'no se pudooo' })
+    })
 })
 
 export default handler

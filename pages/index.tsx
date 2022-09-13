@@ -28,7 +28,9 @@ const Home: NextPage<any> = ({ data }) => {
 }
 
 export const getStaticProps = async () => {
-  const res = await fetch('http://localhost:3000/api/posts')
+  const res = await fetch('http://localhost:3000/api/posts', {
+    method: 'GET'
+  })
   const json = await res.json()
   return {
     props: {

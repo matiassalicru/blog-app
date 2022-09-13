@@ -32,5 +32,6 @@ export const SCPostText = styled.p`
   overflow: hidden;
   text-overflow: ellipsis;
   margin: 0;
+  align-self: flex-start;
 `
 
