@@ -17,6 +17,5 @@ export const SCPostTitle = styled.h1`
 export const SCPostText = styled.p`
   font-size: 1.2rem;
   line-height: 2rem;
-  letter-spacing: 1px;
   font-weight: 300;
 `
