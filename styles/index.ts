@@ -6,3 +6,11 @@ export const SCIndexMain = styled.main`
   justify-content: center;
   align-items: center;
 `
+
+export const SCIndexContent = styled.div`
+  display: grid;
+  max-width: 100%;
+  grid-template-columns: 75% 25%;
+  margin: 60px 0;
+  padding: 0 50px;
+`

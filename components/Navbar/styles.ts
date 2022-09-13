@@ -9,6 +9,8 @@ export const SCNavContainer = styled.div`
 `
 
 export const SCLink = styled.a`
+  display: flex;
+  align-items: center;
   text-decoration: none;
   color: inherit;
   font-size: 24px;
@@ -24,7 +26,19 @@ export const SCLink = styled.a`
   }
 `
 
+export const SCRightContent = styled.div`
+  display: flex;
+`
+
 export const SCLeftContent = styled.div`
   display: flex;
+`
 
+export const SCLogo = styled.div`
+  width: 60px;
+  height: 60px;
+  background-image: url('https://i.ibb.co/R6hzBS5/memoji.png');
+  background-position: center;
+  background-size: cover;
+  margin: 0 6px;
 `

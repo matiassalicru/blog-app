@@ -6,7 +6,7 @@ export const SCPostContainer = styled.div`
   justify-content: center;
   align-items: center;
   border-color: #fca252;
-  width: 80%;
+  width: 100%;
   padding: 15px;
   margin: 10px 0;
   cursor: pointer;
@@ -27,7 +27,7 @@ export const SCPostTitle = styled.h1`
 export const SCPostText = styled.p`
   font-size: 1.2rem;
   height: 50px;
-  width: 100%;
+  max-width: 100%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
