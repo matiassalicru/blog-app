@@ -18,7 +18,7 @@ const CreatePost: NextPage = () => {
   const [description, setDescription] = useState('')
 
   const submitPost = async () => {
-    const res = await fetch('http://localhost:3000/api/posts', {
+    await fetch('http://localhost:3000/api/posts', {
       method: 'POST',
       body: JSON.stringify({
         post: {
@@ -27,6 +27,7 @@ const CreatePost: NextPage = () => {
           topic: 'Test',
           user_id: 123,
           date: new Date()
+          // Add ID to posts, may broke DB if I dont add this.
         },
       }),
       headers: {
