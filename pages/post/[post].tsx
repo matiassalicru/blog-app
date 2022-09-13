@@ -1,11 +1,12 @@
-import { Button } from 'components/Button/Button'
-import { Nav } from 'components/Nav/Nav'
 import React, { useEffect, useState } from 'react'
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 
 // Types
-import { PostTypes } from 'components/PostPreviews/types'
+import { PostTypes } from '../../components/PostPreviews/types'
+
+// Component 
+import { Button } from '../../components/Button/Button'
 
 // Styles
 import { SCPostContent, SCPostTitle, SCPostText } from './styles'

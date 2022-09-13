@@ -3,9 +3,11 @@ import Head from 'next/head'
 
 // Components
 import { Dashboard } from '../components/Dashboard/Dashboard'
-import { SCIndexMain, SCIndexContent } from 'styles'
-import { Navbar } from 'components/Navbar/Navbar'
-import { InfoTile } from 'components/InfoTile/InfoTile'
+import { Navbar } from '../components/Navbar/Navbar'
+import { InfoTile } from '../components/InfoTile/InfoTile'
+
+// Styles
+import { SCIndexMain, SCIndexContent } from '../styles'
 
 const Home: NextPage<any> = ({ data }) => {
   return (
@@ -29,7 +31,7 @@ const Home: NextPage<any> = ({ data }) => {
 
 export const getStaticProps = async () => {
   const res = await fetch('http://localhost:3000/api/posts', {
-    method: 'GET'
+    method: 'GET',
   })
   const json = await res.json()
   return {

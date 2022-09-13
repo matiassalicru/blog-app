@@ -1,5 +1,5 @@
-import { Button } from 'components/Button/Button'
 import React, { FunctionComponent, useState } from 'react'
+import { Button } from '../Button/Button'
 import { useRouter } from 'next/router'
 import { PostPreview } from '../PostPreviews/PostPreview'
 import { PostTypes } from '../PostPreviews/types'

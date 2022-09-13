@@ -5,10 +5,12 @@ import { useRouter } from 'next/router'
 import { NextPage } from 'next'
 
 // Components
-import { Button } from 'components/Button/Button'
+import { Button } from '../../components/Button/Button'
+import { Input } from '../../components/Input/Input'
+import { Textarea } from '../../components/Textarea/Textarea'
+
+// Styles
 import { SCNewPostContainer, SCButtonArea } from './styles'
-import { Input } from 'components/Input/Input'
-import { Textarea } from 'components/Textarea/Textarea'
 
 const CreatePost: NextPage = () => {
   const router = useRouter()
