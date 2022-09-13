@@ -3,8 +3,9 @@ import Head from 'next/head'
 
 // Components
 import { Dashboard } from '../components/Dashboard/Dashboard'
-import { SCIndexMain } from 'styles'
+import { SCIndexMain, SCIndexContent } from 'styles'
 import { Navbar } from 'components/Navbar/Navbar'
+import { InfoTile } from 'components/InfoTile/InfoTile'
 
 const Home: NextPage<any> = ({ data }) => {
   return (
@@ -17,7 +18,10 @@ const Home: NextPage<any> = ({ data }) => {
 
       <SCIndexMain>
         <Navbar />
-        <Dashboard data={data} />
+        <SCIndexContent>
+          <Dashboard data={data} />
+          <InfoTile />
+        </SCIndexContent>
       </SCIndexMain>
     </>
   )

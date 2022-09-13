@@ -5,16 +5,15 @@ import { ACCENT_COLOR } from "styles/constants";
 
 export const SCDashboardContainer = styled.div`
   position: relative;
-  width: 60%;
   background-color: #f1f1f1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-radius: 15px;
-  margin: 50px 100px;
+  border-radius: 16px;
   padding: 20px;
 `
+
 export const SCButtonContainer = styled.h1`
   position: absolute;
   top: 0px;
