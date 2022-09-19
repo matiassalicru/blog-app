@@ -1,8 +1,7 @@
 import { MongoClient } from 'mongodb'
 import nextConnect from 'next-connect'
-import { config } from '../config'
 
-const client = new MongoClient(config.MONGODB_URI, {
+const client = new MongoClient(process.env.NEXT_P, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
@@ -10,7 +9,7 @@ const client = new MongoClient(config.MONGODB_URI, {
 async function database(req, res, next) {
   await client.connect()
   req.dbClient = client
-  req.db = client.db(config.DB_NAME)
+  req.db = client.db(process.env.NEXT_PUBLIC_DB_NAME)
   return next()
 }
 
