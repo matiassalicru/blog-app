@@ -9,7 +9,7 @@ import { InfoTile } from '../components/InfoTile/InfoTile'
 // Styles
 import { SCIndexMain, SCIndexContent } from '../styles'
 import clientPromise from 'lib/mongodb'
-import { FindOptions } from 'mongodb'
+import { Collection, FindOptions } from 'mongodb'
 
 export async function getServerSideProps(context: any) {
   try {
@@ -20,17 +20,20 @@ export async function getServerSideProps(context: any) {
     // Options to sort documents from newer to older
     const options: FindOptions = {
       sort: { date: -1 },
-    };
-    const cursor = data.find({}, options);
+    }
+    const cursor = data.find({}, options)
 
-    if ((await cursor.count()) === 0) {
-      console.log("No documents found!");
+    if ((await db.collection('posts').countDocuments()) === 0) {
+      console.log('No documents found!')
     }
 
-    const formattedData = await cursor.toArray();
-    
+    const formattedData = await cursor.toArray()
+
     return {
-      props: { isConnected: true, data: JSON.parse(JSON.stringify(formattedData))  },
+      props: {
+        isConnected: true,
+        data: JSON.parse(JSON.stringify(formattedData)),
+      },
     }
   } catch (e) {
     console.error(e)

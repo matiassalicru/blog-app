@@ -1,4 +1,5 @@
 import nextConnect from 'next-connect'
+import { config } from '../../config'
 import middleware from '../../middleware/database'
 
 const handler = nextConnect()
@@ -7,7 +8,7 @@ handler.use(middleware)
 
 handler.get(async (req, res) => {
   let cursor = {}
-  cursor = await req.db.collection(process.env.POSTS_COLLECTION_NAME).find().sort({ date: -1 })
+  cursor = await req.db.collection(config.POSTS_COLLECTION_NAME).find().sort({ date: -1 })
   const arr = []
 
   while (await cursor.hasNext()) {
@@ -21,7 +22,7 @@ handler.get(async (req, res) => {
 handler.post(async (req, res) => {
   let data = req.body.post
   req.db
-    .collection(process.env.POSTS_COLLECTION_NAME)
+    .collection(config.POSTS_COLLECTION_NAME)
     .insertOne(data)
     .then((result) => res.status(201).json(result))
     .catch((err) => {
