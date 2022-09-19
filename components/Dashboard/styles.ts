@@ -40,3 +40,6 @@ export const SCDashTitle = styled.h1`
   font-size: 42px;
 `
 
+export const SCPostContainer = styled.div`
+  width: 100%;
+`

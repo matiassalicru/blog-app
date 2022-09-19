@@ -5,11 +5,13 @@ import { useRouter } from 'next/router'
 // Types
 import { PostTypes } from '../../components/PostPreviews/types'
 
-// Component 
+// Component
 import { Button } from '../../components/Button/Button'
 
 // Styles
 import { SCPostContent, SCPostTitle, SCPostText } from './styles'
+import clientPromise from 'lib/mongodb'
+import { FindOptions } from 'mongodb'
 
 interface PostType {
   posts: PostTypes[]
@@ -41,25 +43,38 @@ const Post: NextPage<PostType> = ({ posts }) => {
 }
 
 export async function getStaticPaths() {
-  const res = await fetch('http://localhost:3000/api/posts')
-  const posts = await res.json()
-
-  const paths = posts.map((post: PostTypes) => ({
-    params: { post: post.id.toString() },
-  }))
-
-  return { paths, fallback: false }
+  return {
+    paths: [
+      { params: { post: '1' } },
+    ],
+    fallback: true,
+  }
 }
 
 export const getStaticProps = async () => {
-  const res = await fetch('http://localhost:3000/api/posts')
-  const json = await res.json()
+  const client = await clientPromise
+  const db = client.db('blogDB')
+  const data = db.collection('posts')
 
+  // Options to sort documents from newer to older
+  const options: FindOptions = {
+    sort: { date: -1 },
+  };
+  const cursor = data.find({}, options);
+
+  if ((await cursor.count()) === 0) {
+    console.log("No documents found!");
+  }
+
+  const formattedData = await cursor.toArray();
+  const parsedData = JSON.parse(JSON.stringify(formattedData))
   return {
     props: {
-      posts: json,
+      posts: parsedData,
     },
   }
+
 }
+
 
 export default Post

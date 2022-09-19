@@ -9,6 +9,7 @@ import {
   SCNavDashboard,
   SCDashTitle,
   SCButtonContainer,
+  SCPostContainer,
 } from './styles'
 
 export const Dashboard: FunctionComponent<any> = ({ data }) => {
@@ -29,10 +30,10 @@ export const Dashboard: FunctionComponent<any> = ({ data }) => {
       </SCNavDashboard>
       {!!posts?.length &&
         posts.map((post) => (
-          <>
+          <SCPostContainer key={post.id}>
             <PostPreview key={post._id} post={post} />
             <SCSeparator />
-          </>
+          </SCPostContainer>
         ))}
     </SCDashboardContainer>
   )

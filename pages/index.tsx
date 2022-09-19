@@ -8,6 +8,37 @@ import { InfoTile } from '../components/InfoTile/InfoTile'
 
 // Styles
 import { SCIndexMain, SCIndexContent } from '../styles'
+import clientPromise from 'lib/mongodb'
+import { FindOptions } from 'mongodb'
+
+export async function getServerSideProps(context: any) {
+  try {
+    const client = await clientPromise
+    const db = client.db('blogDB')
+    const data = db.collection('posts')
+
+    // Options to sort documents from newer to older
+    const options: FindOptions = {
+      sort: { date: -1 },
+    };
+    const cursor = data.find({}, options);
+
+    if ((await cursor.count()) === 0) {
+      console.log("No documents found!");
+    }
+
+    const formattedData = await cursor.toArray();
+    
+    return {
+      props: { isConnected: true, data: JSON.parse(JSON.stringify(formattedData))  },
+    }
+  } catch (e) {
+    console.error(e)
+    return {
+      props: { isConnected: false },
+    }
+  }
+}
 
 const Home: NextPage<any> = ({ data }) => {
   return (
@@ -27,18 +58,6 @@ const Home: NextPage<any> = ({ data }) => {
       </SCIndexMain>
     </>
   )
-}
-
-export const getStaticProps = async () => {
-  const res = await fetch('http://localhost:3000/api/posts', {
-    method: 'GET',
-  })
-  const json = await res.json()
-  return {
-    props: {
-      data: json,
-    },
-  }
 }
 
 export default Home
