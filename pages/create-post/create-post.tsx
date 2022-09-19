@@ -10,7 +10,7 @@ import { Input } from '../../components/Input/Input'
 import { Textarea } from '../../components/Textarea/Textarea'
 
 // Styles
-import { SCNewPostContainer, SCButtonArea } from './styles'
+import { SCNewPostContainer, SCButtonArea } from '../../styles/create-post/styles'
 
 const CreatePost: NextPage = () => {
   const router = useRouter()

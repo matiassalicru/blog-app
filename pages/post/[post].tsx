@@ -9,7 +9,7 @@ import { PostTypes } from '../../components/PostPreviews/types'
 import { Button } from '../../components/Button/Button'
 
 // Styles
-import { SCPostContent, SCPostTitle, SCPostText } from './styles'
+import { SCPostContent, SCPostTitle, SCPostText } from '../../styles/post/styles'
 import clientPromise from 'lib/mongodb'
 import { FindOptions } from 'mongodb'
 
