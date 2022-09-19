@@ -5,8 +5,11 @@ export default function Document() {
     <Html>
       <Head>
         <link
+          rel="preload"
+          as="font"
           href='https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;700&display=swap'
-          rel='stylesheet'
+          type="font/woff2"
+          crossOrigin='true'
         />
         <link rel='preconnect' href='https://fonts.googleapis.com' />
         <link rel='preconnect' href='https://fonts.gstatic.com' />
