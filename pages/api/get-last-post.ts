@@ -11,7 +11,7 @@ const getLastPostHandler = async (req: NextApiRequest, res: NextApiResponse) => 
         const client = await clientPromise
         const db = client.db(process.env.DB_NAME)
         const cursor = db
-          .collection(process.env.POSTS_COLLECTION_NAME)
+          .collection(process.env.POSTS_COLLECTION_NAME || '')
           .find({}).sort( [['_id', -1]] ).limit(1) // get last created item
         const formattedData = await cursor.toArray()
 
