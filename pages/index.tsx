@@ -9,7 +9,7 @@ import { InfoTile } from '../components/InfoTile/InfoTile'
 // Styles
 import { SCIndexMain, SCIndexContent } from '../styles'
 import clientPromise from 'lib/mongodb'
-import { Collection, FindOptions } from 'mongodb'
+import { FindOptions } from 'mongodb'
 
 export async function getServerSideProps(context: any) {
   try {

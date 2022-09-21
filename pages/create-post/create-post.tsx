@@ -10,39 +10,46 @@ import { Input } from '../../components/Input/Input'
 import { Textarea } from '../../components/Textarea/Textarea'
 
 // Styles
-import { SCNewPostContainer, SCButtonArea } from '../../styles/create-post/styles'
+import {
+  SCNewPostContainer,
+  SCButtonArea,
+} from '../../styles/create-post/styles'
+import useSWR from 'swr'
 
 const CreatePost: NextPage = () => {
-  const router = useRouter()
+  const { back } = useRouter()
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
 
-  const submitPost = async () => {
-    await fetch('http://localhost:3000/api/posts', {
+  const fetcher = (url: string) => fetch(url).then((res) => res.json())
+
+  const { data: lastPostId } = useSWR(`../api/get-last-post`, fetcher)
+
+  const onSubmitPost = async () => {
+    fetch('/api/create-post', {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         post: {
           title: title,
           text: description,
           topic: 'Test',
           user_id: 123,
-          date: new Date()
-          // Add ID to posts, may broke DB if I dont add this.
+          date: new Date(),
+          id: lastPostId + 1,
         },
       }),
-      headers: {
-        'Content-Type': 'application/json',
-      },
     }).then(() => {
       setTitle('')
       setDescription('')
     })
-
   }
 
   return (
     <SCNewPostContainer>
-      <Button onClick={() => router.back()} text='Volver' />
+      <Button onClick={() => back()} text='Volver' />
       <Input
         type='text'
         placeholder='Write a shiny title'
@@ -55,7 +62,7 @@ const CreatePost: NextPage = () => {
         onChange={(e) => setDescription(e?.target?.value)}
       />
       <SCButtonArea>
-        <Button onClick={submitPost} text='POST' />
+        <Button onClick={onSubmitPost} text='POST' />
       </SCButtonArea>
     </SCNewPostContainer>
   )

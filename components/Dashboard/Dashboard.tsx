@@ -13,7 +13,7 @@ import {
 } from './styles'
 
 export const Dashboard: FunctionComponent<any> = ({ data }) => {
-  const [posts, setPosts] = useState<PostTypes[]>(data)
+  const [posts] = useState<PostTypes[]>(data)
 
   const router = useRouter()
 
