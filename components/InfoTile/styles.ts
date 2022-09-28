@@ -8,10 +8,10 @@ export const SCInfoTileContainer = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 15px;
-  height: 120px;
   margin: 0 0 0 20px;
   padding: 8px;
-  min-height: 360px;
+  height: fit-content;
+  max-height: 400px;
 `
 
 export const SCInfoTileTitle = styled.p`
@@ -25,10 +25,10 @@ export const SCInfoTileTitle = styled.p`
   font-weight: 500;
 `
 
-export const SCInfoTilePhoto = styled.img`
+export const SCInfoTilePhoto = styled.div`
   border-radius: 50%;
   width: 7rem;
-  height: 7rem;
+  min-height: 7rem;
   background-image: url('https://i.ibb.co/zRFhPds/profile-Image.png');
   background-position: center;
   background-size: cover;
