@@ -14,37 +14,20 @@ import {
   SCNewPostContainer,
   SCButtonArea,
 } from '../../styles/create-post/styles'
-import useSWR from 'swr'
+
+// Utils
+import { createPost, getLastPostId } from 'utils/utils'
 
 const CreatePost: NextPage = () => {
   const { back } = useRouter()
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
 
-  const fetcher = (url: string) => fetch(url).then((res) => res.json())
-
-  const { data: lastPostId } = useSWR(`../api/get-last-post`, fetcher)
-
   const onSubmitPost = async () => {
-    fetch('/api/create-post', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        post: {
-          title: title,
-          text: description,
-          topic: 'Test',
-          user_id: 123,
-          date: new Date(),
-          id: lastPostId + 1,
-        },
-      }),
-    }).then(() => {
-      setTitle('')
-      setDescription('')
-    })
+    const lastPostId = await getLastPostId()
+    await createPost(title, description, lastPostId)
+    setTitle('')
+    setDescription('')
   }
 
   return (
