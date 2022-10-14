@@ -12,7 +12,7 @@ export const Navbar = () => {
       </SCRightContent>
       <SCLeftContent>
         <SCLink>Home</SCLink>
-        <SCLink>Go to portfolio</SCLink>
+        <SCLink href='https://matiassalicru.vercel.app' target="_blank" rel='noopener noreferrer'>Go to portfolio</SCLink>
       </SCLeftContent>
     </SCNavContainer>
   )

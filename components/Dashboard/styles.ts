@@ -21,7 +21,7 @@ export const SCButtonContainer = styled.h1`
 `
 
 export const SCSeparator = styled.div`
-  width: 80%;
+  width: 100%;
   height: 2px;
   background-color: ${ACCENT_COLOR};
   margin: 0;
