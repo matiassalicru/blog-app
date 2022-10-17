@@ -14,7 +14,7 @@ import {
 } from './styles'
 
 export const Dashboard: FunctionComponent<any> = ({ data }) => {
-  const [posts] = useState<PostTypes[]>([])
+  const [posts] = useState<PostTypes[]>(data)
   const [skeletons] = useState([{id: 1}, {id: 2}, {id: 3}, {id: 4}])
 
   const router = useRouter()
@@ -36,7 +36,7 @@ export const Dashboard: FunctionComponent<any> = ({ data }) => {
             <PostPreview key={post._id} post={post} />
             <SCSeparator />
           </SCPostContainer>
-        )) : 
+        )) :
         skeletons.map(skeleton => (
         <SCPostContainer key={skeleton.id}>
             <PostPreviewSkeleton />
