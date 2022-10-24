@@ -1,6 +1,6 @@
 import { MongoClient } from 'mongodb'
 import nextConnect from 'next-connect'
-import { config } from '../config'
+import { config } from '../../config'
 
 const client = new MongoClient(config.MONGODB_URI, {
   useNewUrlParser: true,

@@ -16,7 +16,7 @@ import {
 } from '../../styles/create-post/styles'
 
 // Utils
-import { createPost, getLastPostId } from 'utils/utils'
+import { createPost, getLastPostId } from 'src/utils/utils'
 
 const CreatePost: NextPage = () => {
   const { back } = useRouter()

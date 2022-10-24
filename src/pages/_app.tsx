@@ -1,5 +1,5 @@
 import { Navbar } from '../components/Navbar/Navbar'
-import BasicLayout from 'layout/Basic'
+import BasicLayout from 'src/layout/Basic'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 

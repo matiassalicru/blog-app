@@ -1,4 +1,4 @@
-import { config } from '../config'
+import { config } from '../../config'
 import { MongoClient } from 'mongodb'
 
 if (!config.MONGODB_URI) {

@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
-import { BACKGROUND_COLOR, PRIMARY_COLOR } from 'styles/constants'
+import { BACKGROUND_COLOR, PRIMARY_COLOR } from 'src/styles/constants'
 
 export const GlobalStyle = createGlobalStyle`
     // this is the shared style

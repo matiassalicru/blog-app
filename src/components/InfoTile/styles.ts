@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ACCENT_COLOR } from "styles/constants";
+import { ACCENT_COLOR } from "src/styles/constants";
 
 export const SCInfoTileContainer = styled.div`
   background-color: ${ACCENT_COLOR};

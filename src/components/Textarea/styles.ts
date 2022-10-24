@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { SECONDARY_COLOR } from "styles/constants";
+import { SECONDARY_COLOR } from "src/styles/constants";
 
 export const SCTextareaComponent = styled.textarea`
   width: 100%;

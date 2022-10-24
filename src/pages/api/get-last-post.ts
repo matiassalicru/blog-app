@@ -1,4 +1,4 @@
-import clientPromise from 'lib/mongodb'
+import clientPromise from 'src/lib/mongodb'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 // GET LAST POST ID
