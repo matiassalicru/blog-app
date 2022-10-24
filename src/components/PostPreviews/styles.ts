@@ -5,12 +5,11 @@ export const SCPostContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-color: #fca252;
-  width: 100%;
+  width: auto;
   padding: 15px;
-  margin: 10px 0;
+  margin: 10px 20px;
   cursor: pointer;
-  border-radius: 10px;
+  border-radius: 5px;
   transition: all .3s;
 
   &:hover {

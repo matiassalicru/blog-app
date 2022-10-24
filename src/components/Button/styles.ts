@@ -9,13 +9,14 @@ export const SCButtonComponent = styled.button`
   background-color: ${ACCENT_COLOR};
   cursor: pointer;
   width: fit-content;
-  box-shadow: 2px 2px 5px ${SECONDARY_COLOR};
+  box-shadow: 2px 2px 2px 1px ${SECONDARY_COLOR};
   font-weight: 500;
   letter-spacing: 2px;
   transition: transform 0.2s, box-shadow 0.2s;
 
   &:hover {
-    transform: translate(1px, 1px);
+    transform: translate(2px, 2px);
+    box-shadow: 0px 0px 3px ${SECONDARY_COLOR};
   }
 
   &:active {

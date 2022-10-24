@@ -21,10 +21,10 @@ export const SCButtonContainer = styled.h1`
 `
 
 export const SCSeparator = styled.div`
-  width: 100%;
-  height: 2px;
+  width: auto;
+  height: 1px;
   background-color: ${ACCENT_COLOR};
-  margin: 0;
+  margin: 0 20px;
 `
 
 export const SCNavDashboard = styled.div`
