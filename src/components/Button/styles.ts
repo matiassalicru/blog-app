@@ -23,4 +23,11 @@ export const SCButtonComponent = styled.button`
     transform: translate(3px, 3px);
     box-shadow: 0px 0px ${SECONDARY_COLOR};
   }
+
+  &:disabled {
+    background-color: ${SECONDARY_COLOR};
+    cursor: not-allowed;
+    transform: translate(2px, 2px);
+    box-shadow: 0px 0px 3px ${SECONDARY_COLOR};
+  }
 `

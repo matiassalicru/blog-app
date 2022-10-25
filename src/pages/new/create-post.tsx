@@ -16,7 +16,17 @@ import {
 } from '../../styles/create-post/styles'
 
 // Utils
-import { createPost, getLastPostId } from 'src/utils/utils'
+import { isValidFormat } from 'src/utils/utils'
+import api from 'src/services/api'
+
+interface IPost {
+  title: string
+  text: string
+  topic: string
+  user_id: number
+  date: Date
+  id: number
+}
 
 const CreatePost: NextPage = () => {
   const { back } = useRouter()
@@ -24,10 +34,31 @@ const CreatePost: NextPage = () => {
   const [description, setDescription] = useState('')
 
   const onSubmitPost = async () => {
-    const lastPostId = await getLastPostId()
-    await createPost(title, description, lastPostId)
-    setTitle('')
-    setDescription('')
+    const { data: lastPostId } = await api.get('/posts/get-last-post')
+
+    if (isValidFormat(title, description, lastPostId)) {
+      const post: IPost = {
+        title,
+        text: description,
+        topic: 'Test',
+        user_id: 123,
+        date: new Date(),
+        id: lastPostId + 1,
+      }
+      const {
+        data: { acknowledged },
+      } = await api.post('/posts', { post })
+
+      if (await acknowledged) {
+        // TODO: Create a better alert
+        alert('se creó el post con éxito')
+      }
+
+      setTitle('')
+      setDescription('')
+    } else {
+      alert('error')
+    }
   }
 
   return (
@@ -45,7 +76,11 @@ const CreatePost: NextPage = () => {
         onChange={(e) => setDescription(e?.target?.value)}
       />
       <SCButtonArea>
-        <Button onClick={onSubmitPost} text='POST' />
+        <Button
+          onClick={onSubmitPost}
+          text='POST'
+          disabled={title.length < 1 || description.length < 2}
+        />
       </SCButtonArea>
     </SCNewPostContainer>
   )

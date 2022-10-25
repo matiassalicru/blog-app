@@ -15,7 +15,13 @@ export const SCPostTitle = styled.h1`
 `
 
 export const SCPostText = styled.p`
-  font-size: 1.2rem;
+  font-size: 16px;
   line-height: 2rem;
   font-weight: 300;
+`
+
+export const SCButtonsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `
