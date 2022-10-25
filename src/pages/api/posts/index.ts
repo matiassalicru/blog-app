@@ -10,6 +10,7 @@ const handler = async( req: NextApiRequest, res: NextApiResponse ) => {
 
   switch (method) {
     case 'GET':
+      // Get all posts
       try {
         const posts = await getPosts()
         res.status(200).json({ success: true, data: posts })
@@ -19,6 +20,7 @@ const handler = async( req: NextApiRequest, res: NextApiResponse ) => {
       }
       break;
     case 'POST':
+      // Create new post
       try {
         const { post } = await req.body
         const result = await createPost(post)

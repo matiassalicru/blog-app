@@ -1,5 +1,7 @@
-import clientPromise from 'src/services/mongodb'
+// Types
 import type { NextApiRequest, NextApiResponse } from 'next'
+
+// Services
 import { getLastPostId } from 'src/services/methods'
 
 // GET LAST POST ID

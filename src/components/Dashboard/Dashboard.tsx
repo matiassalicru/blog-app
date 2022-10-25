@@ -1,9 +1,15 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import { Button } from '../Button/Button'
 import { useRouter } from 'next/router'
-import { PostPreview } from '../PostPreviews/PostPreview'
+
+// Types
 import { IPosts } from '../PostPreviews/types'
+
+// UIComponents
 import { PostPreviewSkeleton } from '../PostPreviews/Skeleton/PostPreviewSkeleton'
+import { PostPreview } from '../PostPreviews/PostPreview'
+import { Button } from '../Button/Button'
+
+// Styles
 import {
   SCDashboardContainer,
   SCSeparator,
@@ -12,6 +18,8 @@ import {
   SCButtonContainer,
   SCPostContainer,
 } from './styles'
+
+// Services
 import api from 'src/services/api'
 
 export const Dashboard: FunctionComponent<any> = () => {

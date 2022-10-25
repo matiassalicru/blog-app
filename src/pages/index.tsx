@@ -7,7 +7,7 @@ import { InfoTile } from '../components/InfoTile/InfoTile'
 // Styles
 import { SCIndexMain, SCIndexContent } from '../styles'
 
-const Home: NextPage<any> = () => {
+const Home: NextPage = () => {
   return (
     <SCIndexMain>
       <SCIndexContent>

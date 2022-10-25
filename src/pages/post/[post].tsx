@@ -13,18 +13,13 @@ import {
   SCPostContent,
   SCPostTitle,
   SCPostText,
-  SCButtonsContainer
+  SCButtonsContainer,
 } from '../../styles/post/styles'
 
-// Libs
-import useSWR from 'swr'
+// Services
 import api from 'src/services/api'
 
-interface IPost {
-  posts: IPosts[]
-}
-
-const Post: NextPage<IPost> = () => {
+const Post: NextPage = () => {
   const [post, setPost] = useState<IPosts>()
   const { query, back, push } = useRouter()
   const { post: postId } = query
@@ -44,22 +39,22 @@ const Post: NextPage<IPost> = () => {
   }
 
   const onDeletePost = async () => {
-    const { data: { ok } } = await api.delete(`/posts/${postId}`)
+    const {
+      data: { ok },
+    } = await api.delete(`/posts/${postId}`)
     if (ok) alert('se eliminó el post')
     push('/')
   }
 
   return (
-    <>
-      <SCPostContent>
-        <SCButtonsContainer>
-          <Button onClick={onBackButtonClick} text='Back' />
-          <Button onClick={onDeletePost} text='🗑' />
-        </SCButtonsContainer>
-        <SCPostTitle>{post?.title}</SCPostTitle>
-        <SCPostText>{post?.text}</SCPostText>
-      </SCPostContent>
-    </>
+    <SCPostContent>
+      <SCButtonsContainer>
+        <Button onClick={onBackButtonClick} text='Back' />
+        <Button onClick={onDeletePost} text='🗑' />
+      </SCButtonsContainer>
+      <SCPostTitle>{post?.title}</SCPostTitle>
+      <SCPostText>{post?.text}</SCPostText>
+    </SCPostContent>
   )
 }
 
