@@ -5,9 +5,9 @@ import React, { FunctionComponent } from 'react'
 import { SCPostContainer, SCPostTitle, SCPostText } from './styles'
 
 // Types
-import { PostTypes } from './types'
+import { IPosts } from './types'
 interface TypePost {
-  post: PostTypes
+  post: IPosts
 }
 
 export const PostPreview: FunctionComponent<TypePost> = ({ post }) => {
