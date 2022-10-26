@@ -1,4 +1,4 @@
-export interface PostTypes {
+export interface IPosts {
   id: number
   _id?: string
   date?: Date
