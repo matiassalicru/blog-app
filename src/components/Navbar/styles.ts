@@ -20,6 +20,7 @@ export const SCLink = styled.a`
   cursor: pointer;
   transition: 0.3s;
   font-weight: 500;
+  max-height: 72px;
 
   &:hover {
     background-color: ${BACKGROUND_SECONDARY_COLOR};
@@ -38,7 +39,29 @@ export const SCLogo = styled.div`
   width: 60px;
   height: 60px;
   background-image: url('https://i.ibb.co/R6hzBS5/memoji.png');
+  border-radius: 10px;
   background-position: center;
   background-size: cover;
   margin: 0 6px;
+`
+
+export const SCSignOut = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  justify-content: center;
+  align-items: center;
+`
+
+export const SCSignOutTitle = styled.p`
+    margin: 5px 0;
+    padding: 0;
+`
+
+export const SCUserName = styled.p`
+    font-size: 16px;
+    font-style: italic;
+    margin: 5px 0;
+    padding: 0;
 `

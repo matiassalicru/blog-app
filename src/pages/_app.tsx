@@ -2,8 +2,19 @@ import { Navbar } from '../components/Navbar/Navbar'
 import BasicLayout from 'src/layout/Basic'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
+import { useEffect, useState } from 'react'
+import { getSession } from 'next-auth/react';
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const [user, setUser] = useState<null | any>(null)
+  
+  useEffect(() => {
+    ;(async () => {
+      const session = await getSession()
+      setUser(session?.user)
+    })()
+  }, [])
+
   return (
     <BasicLayout> 
       <Head>
@@ -12,7 +23,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <Navbar />
+      <Navbar user={user} />
       <Component {...pageProps} />
     </BasicLayout>
   )

@@ -24,18 +24,15 @@ import {
 import api from 'src/services/api'
 
 export const Dashboard: FunctionComponent<any> = () => {
+  const [user, setUser] = useState(null)
   const [posts, setPosts] = useState<IPosts[]>([])
   const [skeletons] = useState([{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }])
 
-  useEffect(() => {
-    (async () => {
-      const session = await getSession()
-      console.log('🚀 ~ session', session)
-    })()
-  }, [])
 
   const getData = async () => {
-    const { data: { data } } = await api.get('/posts')
+    const {
+      data: { data },
+    } = await api.get('/posts')
     const posts = await data
     setPosts(posts)
   }
