@@ -11,7 +11,7 @@ const getEnvironmentVariable = (environmentVariable: string): string => {
 
 export const config = {
   DB_NAME: getEnvironmentVariable("DB_NAME"),
+  NODE_ENV: getEnvironmentVariable("NODE_ENV"),
   MONGODB_URI: getEnvironmentVariable("MONGODB_URI"),
   POSTS_COLLECTION_NAME: getEnvironmentVariable("POSTS_COLLECTION_NAME"),
-  NODE_ENV: getEnvironmentVariable("NODE_ENV")
 };

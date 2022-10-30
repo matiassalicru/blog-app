@@ -29,7 +29,7 @@ interface IPost {
 }
 
 const CreatePost: NextPage = () => {
-  const { back } = useRouter()
+  const { push } = useRouter()
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
 
@@ -63,7 +63,7 @@ const CreatePost: NextPage = () => {
 
   return (
     <SCNewPostContainer>
-      <Button onClick={() => back()} text='Volver' />
+      <Button onClick={() => push('/')} text='Volver' />
       <Input
         type='text'
         placeholder='Write a shiny title'

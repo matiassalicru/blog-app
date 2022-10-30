@@ -54,7 +54,7 @@ export const SCSignOut = styled.div`
   align-items: center;
 `
 
-export const SCSignOutTitle = styled.p`
+export const SCSignTitle = styled.p`
     margin: 5px 0;
     padding: 0;
 `
@@ -64,4 +64,23 @@ export const SCUserName = styled.p`
     font-style: italic;
     margin: 5px 0;
     padding: 0;
+`
+
+export const SCButtonLink = styled.div`
+display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  font-size: 24px;
+  padding: 16px;
+  border-radius: 12px;
+  margin: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: 500;
+  max-height: 72px;
+
+  &:hover {
+    background-color: ${BACKGROUND_SECONDARY_COLOR};
+  }
 `

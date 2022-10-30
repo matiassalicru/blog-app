@@ -1,6 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import { getSession } from 'next-auth/react'
 
 // Types
 import { IPosts } from '../PostPreviews/types'
@@ -23,11 +22,10 @@ import {
 // Services
 import api from 'src/services/api'
 
-export const Dashboard: FunctionComponent<any> = () => {
+export const Dashboard: FunctionComponent<any> = ({ session }) => {
   const [user, setUser] = useState(null)
   const [posts, setPosts] = useState<IPosts[]>([])
   const [skeletons] = useState([{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }])
-
 
   const getData = async () => {
     const {
@@ -47,12 +45,14 @@ export const Dashboard: FunctionComponent<any> = () => {
     <SCDashboardContainer>
       <SCNavDashboard>
         <SCDashTitle>Last posts</SCDashTitle>
-        <SCButtonContainer>
-          <Button
-            onClick={() => router.push('/new/create-post')}
-            text='New post'
-          />
-        </SCButtonContainer>
+        {session && (
+          <SCButtonContainer>
+            <Button
+              onClick={() => router.push('/new/create-post')}
+              text='New post'
+            />
+          </SCButtonContainer>
+        )}
       </SCNavDashboard>
       {!!posts?.length
         ? posts.map((post) => (
