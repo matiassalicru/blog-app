@@ -1,4 +1,8 @@
+import { NextPage } from 'next'
 import { getSession, GetSessionParams } from 'next-auth/react'
+
+// Types
+import { ISessionProps } from 'src/types/globalTypes.interface'
 
 // Components
 import { Dashboard } from '../components/Dashboard/Dashboard'
@@ -7,22 +11,8 @@ import { InfoTile } from '../components/InfoTile/InfoTile'
 // Styles
 import { SCIndexMain, SCIndexContent } from '../styles'
 
-interface IUser {
-  name: string;
-  image: string;
-  email: string;
-}
 
-interface HomeTypes {
-  session: ISession
-}
-
-interface ISession {
-  expires: string;
-  user: IUser
-}
-
-const Home = ({ session }: HomeTypes) => {
+const Home: NextPage<ISessionProps> = ({ session }) => {
   return (
     <SCIndexMain>
       <SCIndexContent>

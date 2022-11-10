@@ -1,8 +1,10 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import React, { FunctionComponent, useCallback, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
 // Types
 import { IPosts } from '../PostPreviews/types'
+import { ISessionProps } from 'src/types/globalTypes.interface'
+import { NextPage } from 'next'
 
 // UIComponents
 import { PostPreviewSkeleton } from '../PostPreviews/Skeleton/PostPreviewSkeleton'
@@ -19,25 +21,22 @@ import {
   SCPostContainer,
 } from './styles'
 
-// Services
-import api from 'src/services/api'
+// Utils
+import { getData } from './utils'
 
-export const Dashboard: FunctionComponent<any> = ({ session }) => {
-  const [user, setUser] = useState(null)
+
+export const Dashboard: NextPage<ISessionProps> = ({ session }) => {
   const [posts, setPosts] = useState<IPosts[]>([])
   const [skeletons] = useState([{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }])
 
-  const getData = async () => {
-    const {
-      data: { data },
-    } = await api.get('/posts')
-    const posts = await data
+  const getPosts = useCallback(async () => {
+    const posts = await getData()
     setPosts(posts)
-  }
-
-  useEffect(() => {
-    getData()
   }, [])
+  
+  useEffect(() => {
+    getPosts()
+  }, [getPosts])
 
   const router = useRouter()
 
