@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
+
+// Session
 import {
   getSession,
   GetSessionParams,
@@ -6,7 +9,8 @@ import {
   signOut,
   signIn,
 } from 'next-auth/react'
-import { useRouter } from 'next/router'
+
+// Styles
 import {
   SCNavContainer,
   SCLink,
@@ -19,6 +23,9 @@ import {
   SCButtonLink,
 } from './styles'
 
+// Constants
+import { AUTHENTICATED, GITHUB_SIGN_IN, HOME_PATH, LOADING } from 'src/utils/contants'
+
 export const Navbar = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
@@ -26,27 +33,25 @@ export const Navbar = () => {
   const router = useRouter()
 
   useEffect(() => {
-    setIsAuthenticated(status === 'authenticated')
-    setIsLoading(status === 'loading')
+    setIsAuthenticated(status === AUTHENTICATED)
+    setIsLoading(status === LOADING)
   }, [status])
 
   const onLogInOut = async () => {
     if (isAuthenticated) {
-      console.log('🚀 ~ onLogInOut ~ router.pathname', router.pathname)
-      if (router.pathname !== '/') {
-        console.log("entré")
-        await router.replace('/')
+      if (router.pathname !== HOME_PATH) {
+        await router.replace(HOME_PATH)
       }
       signOut()
     } else {
-      signIn('github')
+      signIn(GITHUB_SIGN_IN)
     }
   }
 
   return (
     <SCNavContainer>
       <SCRightContent>
-        <SCButtonLink onClick={() => router.push('/')}>
+        <SCButtonLink onClick={() => router.push(HOME_PATH)}>
           <SCLogo />
           Matías Salicrú
         </SCButtonLink>

@@ -19,6 +19,9 @@ import {
 // Services
 import api from 'src/services/api'
 
+// Constants
+import { HOME_PATH } from 'src/utils/contants'
+
 const Post: NextPage = () => {
   const [post, setPost] = useState<IPosts>()
   const { query, back, push } = useRouter()
@@ -43,14 +46,14 @@ const Post: NextPage = () => {
       data: { ok },
     } = await api.delete(`/posts/${postId}`)
     if (ok) alert('se eliminó el post')
-    push('/')
+    push(HOME_PATH)
   }
 
   return (
     <SCPostContent>
       <SCButtonsContainer>
         <Button onClick={onBackButtonClick} text='Back' />
-        <Button onClick={onDeletePost} text='🗑' />
+        <Button onClick={onDeletePost} text='Delete' />
       </SCButtonsContainer>
       <SCPostTitle>{post?.title}</SCPostTitle>
       <SCPostText>{post?.text}</SCPostText>

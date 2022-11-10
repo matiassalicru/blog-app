@@ -21,6 +21,9 @@ import api from 'src/services/api'
 
 // Auth
 import { signIn, useSession } from 'next-auth/react'
+
+// Constants
+import { AUTHENTICATED, GITHUB_SIGN_IN, HOME_PATH } from 'src/utils/contants'
 interface IPost {
   title: string
   text: string
@@ -39,7 +42,7 @@ const CreatePost: any = () => {
   const { status } = useSession()
 
   useEffect(() => {
-    setIsAuthenticated(status === 'authenticated')
+    setIsAuthenticated(status === AUTHENTICATED)
   }, [status])
 
   const onSubmitPost = async () => {
@@ -75,7 +78,7 @@ const CreatePost: any = () => {
       <SCNewPostContainer>
         Sign in to create a new post
         <SCButtonArea>
-          <Button onClick={() => signIn('github')} text='Sign in' />
+          <Button onClick={() => signIn(GITHUB_SIGN_IN)} text='Sign in' />
         </SCButtonArea>
       </SCNewPostContainer>
     )
@@ -83,7 +86,7 @@ const CreatePost: any = () => {
 
   return (
     <SCNewPostContainer>
-      <Button onClick={() => router.push('/')} text='Volver' />
+      <Button onClick={() => router.push(HOME_PATH)} text='Volver' />
       <Input
         type='text'
         placeholder='Write a shiny title'
