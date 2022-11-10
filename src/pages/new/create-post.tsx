@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
 // Types
 import { NextPage } from 'next'
+import { IPost } from 'src/types/globalTypes.interface'
 
 // Components
 import { Button } from '../../components/Button/Button'
@@ -17,24 +18,41 @@ import {
 
 // Utils
 import { isValidFormat } from 'src/utils/utils'
-import api from 'src/services/api'
 
-interface IPost {
-  title: string
-  text: string
-  topic: string
-  user_id: number
-  date: Date
-  id: number
-}
+// Requests
+import { createNewPost, getLastPostId } from 'src/services/requests'
+
+// Auth
+import { signIn, useSession } from 'next-auth/react'
+
+// Constants
+import { AUTHENTICATED, GITHUB_SIGN_IN, HOME_PATH } from 'src/utils/contants'
 
 const CreatePost: NextPage = () => {
-  const { back } = useRouter()
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const router = useRouter()
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
 
+  const { status } = useSession()
+
+  useEffect(() => {
+    setIsAuthenticated(status === AUTHENTICATED)
+  }, [status])
+
+  if (!isAuthenticated) {
+    return (
+      <SCNewPostContainer>
+        Sign in to create a new post
+        <SCButtonArea>
+          <Button onClick={() => signIn(GITHUB_SIGN_IN)} text='Sign in' />
+        </SCButtonArea>
+      </SCNewPostContainer>
+    )
+  }
+
   const onSubmitPost = async () => {
-    const { data: lastPostId } = await api.get('/posts/get-last-post')
+    const lastPostId = await getLastPostId()
 
     if (isValidFormat(title, description, lastPostId)) {
       const post: IPost = {
@@ -45,11 +63,10 @@ const CreatePost: NextPage = () => {
         date: new Date(),
         id: lastPostId + 1,
       }
-      const {
-        data: { acknowledged },
-      } = await api.post('/posts', { post })
 
-      if (await acknowledged) {
+      const newPostIsCreated = await createNewPost(post) 
+
+      if (newPostIsCreated) {
         // TODO: Create a better alert
         alert('se creó el post con éxito')
       }
@@ -63,7 +80,7 @@ const CreatePost: NextPage = () => {
 
   return (
     <SCNewPostContainer>
-      <Button onClick={() => back()} text='Volver' />
+      <Button onClick={() => router.push(HOME_PATH)} text='Volver' />
       <Input
         type='text'
         placeholder='Write a shiny title'

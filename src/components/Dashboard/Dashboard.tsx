@@ -1,8 +1,9 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import React, { FunctionComponent, useCallback, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
 // Types
 import { IPosts } from '../PostPreviews/types'
+import { NextPage } from 'next'
 
 // UIComponents
 import { PostPreviewSkeleton } from '../PostPreviews/Skeleton/PostPreviewSkeleton'
@@ -19,22 +20,34 @@ import {
   SCPostContainer,
 } from './styles'
 
-// Services
-import api from 'src/services/api'
+// Utils
+import { getData } from './utils'
 
-export const Dashboard: FunctionComponent<any> = () => {
+// Auth
+import { useSession } from 'next-auth/react'
+
+// Constants
+import { AUTHENTICATED } from 'src/utils/contants'
+
+
+export const Dashboard: NextPage = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [posts, setPosts] = useState<IPosts[]>([])
   const [skeletons] = useState([{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }])
+  const { status } = useSession()
 
-  const getData = async () => {
-    const { data: { data } } = await api.get('/posts')
-    const posts = await data
+  const getPosts = useCallback(async () => {
+    const posts = await getData()
     setPosts(posts)
-  }
+  }, [])
 
   useEffect(() => {
-    getData()
-  }, [])
+    setIsAuthenticated(status === AUTHENTICATED)
+  }, [status])
+  
+  useEffect(() => {
+    getPosts()
+  }, [getPosts])
 
   const router = useRouter()
 
@@ -42,12 +55,14 @@ export const Dashboard: FunctionComponent<any> = () => {
     <SCDashboardContainer>
       <SCNavDashboard>
         <SCDashTitle>Last posts</SCDashTitle>
-        <SCButtonContainer>
-          <Button
-            onClick={() => router.push('/new/create-post')}
-            text='New post'
-          />
-        </SCButtonContainer>
+        {isAuthenticated && (
+          <SCButtonContainer>
+            <Button
+              onClick={() => router.push('/new/create-post')}
+              text='New post'
+            />
+          </SCButtonContainer>
+        )}
       </SCNavDashboard>
       {!!posts?.length
         ? posts.map((post) => (
