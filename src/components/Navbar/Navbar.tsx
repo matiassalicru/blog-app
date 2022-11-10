@@ -19,8 +19,8 @@ import {
   SCLogo,
   SCSignOut,
   SCSignTitle,
-  SCUserName,
   SCButtonLink,
+  SCUserImage,
 } from './styles'
 
 // Constants
@@ -72,7 +72,7 @@ export const Navbar = () => {
                 {isAuthenticated ? 'Sign out' : 'Sign In'}
               </SCSignTitle>
               {isAuthenticated && data && (
-                <SCUserName>{data.user?.name}</SCUserName>
+                <SCUserImage loading='lazy' src={data.user?.image || ''} />
               )}
             </SCSignOut>
           </SCButtonLink>

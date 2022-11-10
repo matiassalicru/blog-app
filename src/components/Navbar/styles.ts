@@ -47,7 +47,6 @@ export const SCLogo = styled.div`
 
 export const SCSignOut = styled.div`
   display: flex;
-  flex-direction: column;
   padding: 0;
   margin: 0;
   justify-content: center;
@@ -59,15 +58,8 @@ export const SCSignTitle = styled.p`
     padding: 0;
 `
 
-export const SCUserName = styled.p`
-    font-size: 16px;
-    font-style: italic;
-    margin: 5px 0;
-    padding: 0;
-`
-
 export const SCButtonLink = styled.div`
-display: flex;
+  display: flex;
   align-items: center;
   text-decoration: none;
   color: inherit;
@@ -83,4 +75,11 @@ display: flex;
   &:hover {
     background-color: ${BACKGROUND_SECONDARY_COLOR};
   }
+`
+
+export const SCUserImage = styled.img`
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  margin: 0 5px;
 `
