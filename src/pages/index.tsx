@@ -16,7 +16,7 @@ const Home: NextPage<ISessionProps> = ({ session }) => {
   return (
     <SCIndexMain>
       <SCIndexContent>
-        <Dashboard session={session} />
+        <Dashboard />
         <InfoTile />
       </SCIndexContent>
     </SCIndexMain>

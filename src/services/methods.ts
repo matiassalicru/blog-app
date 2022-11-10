@@ -37,7 +37,6 @@ export const createPost = async (postData: any) => {
   if (!postData) throw 'Invalid Data'
   const result = await collection.insertOne(postData)
   
-  console.log('🚀 ~ createPost ~ result', result)
   return result
 }
 

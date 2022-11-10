@@ -3,7 +3,6 @@ import { useRouter } from 'next/router'
 
 // Types
 import { IPosts } from '../PostPreviews/types'
-import { ISessionProps } from 'src/types/globalTypes.interface'
 import { NextPage } from 'next'
 
 // UIComponents
@@ -24,15 +23,27 @@ import {
 // Utils
 import { getData } from './utils'
 
+// Auth
+import { useSession } from 'next-auth/react'
 
-export const Dashboard: NextPage<ISessionProps> = ({ session }) => {
+// Constants
+import { AUTHENTICATED } from 'src/utils/contants'
+
+
+export const Dashboard: NextPage = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [posts, setPosts] = useState<IPosts[]>([])
   const [skeletons] = useState([{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }])
+  const { status } = useSession()
 
   const getPosts = useCallback(async () => {
     const posts = await getData()
     setPosts(posts)
   }, [])
+
+  useEffect(() => {
+    setIsAuthenticated(status === AUTHENTICATED)
+  }, [status])
   
   useEffect(() => {
     getPosts()
@@ -44,7 +55,7 @@ export const Dashboard: NextPage<ISessionProps> = ({ session }) => {
     <SCDashboardContainer>
       <SCNavDashboard>
         <SCDashTitle>Last posts</SCDashTitle>
-        {session && (
+        {isAuthenticated && (
           <SCButtonContainer>
             <Button
               onClick={() => router.push('/new/create-post')}
