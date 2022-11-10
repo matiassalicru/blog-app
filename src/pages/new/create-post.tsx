@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
 // Types
@@ -19,6 +19,8 @@ import {
 import { isValidFormat } from 'src/utils/utils'
 import api from 'src/services/api'
 
+// Auth
+import { signIn, useSession } from 'next-auth/react'
 interface IPost {
   title: string
   text: string
@@ -28,10 +30,17 @@ interface IPost {
   id: number
 }
 
-const CreatePost: NextPage = () => {
-  const { push } = useRouter()
+const CreatePost: any = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const router = useRouter()
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
+
+  const { status } = useSession()
+
+  useEffect(() => {
+    setIsAuthenticated(status === 'authenticated')
+  }, [status])
 
   const onSubmitPost = async () => {
     const { data: lastPostId } = await api.get('/posts/get-last-post')
@@ -61,9 +70,20 @@ const CreatePost: NextPage = () => {
     }
   }
 
+  if (!isAuthenticated) {
+    return (
+      <SCNewPostContainer>
+        Sign in to create a new post
+        <SCButtonArea>
+          <Button onClick={() => signIn('github')} text='Sign in' />
+        </SCButtonArea>
+      </SCNewPostContainer>
+    )
+  }
+
   return (
     <SCNewPostContainer>
-      <Button onClick={() => push('/')} text='Volver' />
+      <Button onClick={() => router.push('/')} text='Volver' />
       <Input
         type='text'
         placeholder='Write a shiny title'

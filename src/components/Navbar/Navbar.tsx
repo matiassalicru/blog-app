@@ -30,6 +30,19 @@ export const Navbar = () => {
     setIsLoading(status === 'loading')
   }, [status])
 
+  const onLogInOut = async () => {
+    if (isAuthenticated) {
+      console.log('🚀 ~ onLogInOut ~ router.pathname', router.pathname)
+      if (router.pathname !== '/') {
+        console.log("entré")
+        await router.replace('/')
+      }
+      signOut()
+    } else {
+      signIn('github')
+    }
+  }
+
   return (
     <SCNavContainer>
       <SCRightContent>
@@ -49,10 +62,7 @@ export const Navbar = () => {
           <>Skeleton</>
         ) : (
           <SCButtonLink>
-            <SCSignOut
-              onClick={
-                isAuthenticated ? () => signOut() : () => signIn('github')
-              }>
+            <SCSignOut onClick={onLogInOut}>
               <SCSignTitle>
                 {isAuthenticated ? 'Sign out' : 'Sign In'}
               </SCSignTitle>

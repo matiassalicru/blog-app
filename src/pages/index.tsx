@@ -1,4 +1,3 @@
-import type { NextPage } from 'next'
 import { getSession, GetSessionParams } from 'next-auth/react'
 
 // Components
