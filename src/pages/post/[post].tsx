@@ -53,7 +53,7 @@ const Post: NextPage = () => {
     <SCPostContent>
       <SCButtonsContainer>
         <Button onClick={onBackButtonClick} text='Back' />
-        <Button onClick={onDeletePost} text='Delete' />
+        <Button onClick={onDeletePost} text='Delete' variant='danger'/>
       </SCButtonsContainer>
       <SCPostTitle>{post?.title}</SCPostTitle>
       <SCPostText>{post?.text}</SCPostText>
