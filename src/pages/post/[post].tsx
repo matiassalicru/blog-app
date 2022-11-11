@@ -7,6 +7,7 @@ import { IPosts } from '../../components/PostPreviews/types'
 
 // Component
 import { Button } from '../../components/Button/Button'
+import { Modal } from '../../components/Modal/Modal'
 
 // Styles
 import {
@@ -55,6 +56,7 @@ const Post: NextPage = () => {
         <Button onClick={onBackButtonClick} text='Back' />
         <Button onClick={onDeletePost} text='Delete' variant='danger'/>
       </SCButtonsContainer>
+      <Modal text='Are you sure about deleting the post?'/>
       <SCPostTitle>{post?.title}</SCPostTitle>
       <SCPostText>{post?.text}</SCPostText>
     </SCPostContent>
