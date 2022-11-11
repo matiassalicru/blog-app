@@ -1,12 +1,12 @@
 import React, { FunctionComponent } from 'react'
+
+// Types 
+import { IButton } from './Button.interface'
+
+// Styles
 import { SCButtonComponent } from './styles'
 
-interface ButtonTypes {
-  onClick: () => void
-  text: string
-  disabled?: boolean
-}
 
-export const Button: FunctionComponent<ButtonTypes> = ({ onClick, text, disabled = false }) => {
-  return <SCButtonComponent onClick={onClick} disabled={disabled}>{text}</SCButtonComponent>
+export const Button: FunctionComponent<IButton> = ({ onClick, text, disabled = false, variant = 'primary' }) => {
+  return <SCButtonComponent onClick={onClick} disabled={disabled} variant={variant}>{text}</SCButtonComponent>
 }
