@@ -1,5 +1,7 @@
-import { PRIMARY_COLOR, SECONDARY_COLOR, BACKGROUND_SECONDARY_COLOR } from "src/styles/constants";
 import styled from "styled-components";
+
+// Constants
+import { PRIMARY_COLOR, SECONDARY_COLOR, BACKGROUND_SECONDARY_COLOR } from "../../styles/constants";
 
 export const SCModalContainer = styled.div`
   position: absolute;
@@ -44,9 +46,6 @@ export const SCModalButtons = styled.div`
   align-items: end;
   padding: 10px;
   width: 100%;
-  button {
-    margin: 0 20px;
-  }
 `
 
 export const SCModalBackdrop = styled.div`
@@ -56,5 +55,6 @@ export const SCModalBackdrop = styled.div`
   top: 0;
   width: 100%;
   z-index: 2;
-  background: #00000050;
+  opacity: 0.3;
+  background: ${PRIMARY_COLOR};
 `

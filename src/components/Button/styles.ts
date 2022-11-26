@@ -1,11 +1,10 @@
 import styled, { css } from "styled-components";
 
 // Constants
-import { ACCENT_COLOR, BACKGROUND_COLOR, DANGER_COLOR, SECONDARY_COLOR, WHITE_COLOR } from "src/styles/constants";
+import { ACCENT_COLOR, BACKGROUND_SECONDARY_COLOR, DANGER_COLOR, SECONDARY_COLOR, WHITE_COLOR } from "../../styles/constants";
 
 // Types
 import { IButtonStyles } from "./Button.interface";
-import { BACKGROUND_SECONDARY_COLOR } from '../../styles/constants';
 
 export const SCButtonComponent = styled.button<IButtonStyles>`
   border: 1px solid ${SECONDARY_COLOR};

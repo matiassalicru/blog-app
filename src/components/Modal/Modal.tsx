@@ -12,13 +12,13 @@ import {
 // Types
 import { IModal } from './Modal.interface'
 
-export const Modal = ({
+export const Modal: React.FC<IModal> = ({
   text,
   title = 'Title',
   onSubmit,
   onCancel,
   submitButtonVariant = 'danger',
-}: IModal) => {
+}) => {
   return (
     <>
       <SCModalContainer>
