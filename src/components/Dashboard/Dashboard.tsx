@@ -15,6 +15,9 @@ import { PostPreviewSkeleton } from '../PostPreviews/Skeleton/PostPreviewSkeleto
 import { PostPreview } from '../PostPreviews/PostPreview'
 import { Button } from '../Button/Button'
 
+// Icons
+import { Plus } from '../../icons/Plus'
+
 // Styles
 import {
   SCDashboardContainer,
@@ -33,7 +36,6 @@ import { useSession } from 'next-auth/react'
 
 // Constants
 import { AUTHENTICATED } from 'src/utils/contants'
-import { Plus } from 'src/icons/Plus'
 
 export const Dashboard: NextPage = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false)

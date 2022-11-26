@@ -9,10 +9,8 @@ export interface IButton {
   disabled?: boolean
   variant?: ButtonVariants
   icon?: ReactElement<IconsProps>
-  onlyIcon?: boolean
 }
 
 export interface IButtonStyles {
   variant?: ButtonVariants
-  onlyIcon?: boolean
 }
