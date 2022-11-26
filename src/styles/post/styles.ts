@@ -20,8 +20,8 @@ export const SCPostText = styled.p`
   font-weight: 300;
 `
 
-export const SCButtonsContainer = styled.div`
+export const SCDeleteButtonContainer = styled.div`
   display: flex;
-  align-items: center;
   justify-content: space-between;
+  margin-top: 24px;
 `

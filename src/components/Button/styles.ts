@@ -5,6 +5,7 @@ import { ACCENT_COLOR, BACKGROUND_COLOR, DANGER_COLOR, SECONDARY_COLOR, WHITE_CO
 
 // Types
 import { IButtonStyles } from "./Button.interface";
+import { BACKGROUND_SECONDARY_COLOR } from '../../styles/constants';
 
 export const SCButtonComponent = styled.button<IButtonStyles>`
   border: 1px solid ${SECONDARY_COLOR};
@@ -42,7 +43,8 @@ export const SCButtonComponent = styled.button<IButtonStyles>`
       `
     if (variant === 'secondary') 
       return css`
-        background-color: ${SECONDARY_COLOR};
+        background-color: ${BACKGROUND_SECONDARY_COLOR};
+        box-shadow: 2px 2px 2px 1px ${SECONDARY_COLOR};
       `
       if (variant === 'danger') 
       return css`

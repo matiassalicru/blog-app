@@ -7,7 +7,7 @@ export const SCModalContainer = styled.div`
   left: 0;
   right: 0;
   top: 0;
-  bottom: 0;
+  bottom: 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,6 +19,17 @@ export const SCModalContainer = styled.div`
   max-height: 200px;
   height: auto;;
   opacity: 1;
+  box-shadow: 2px 2px 8px ${SECONDARY_COLOR};
+  z-index: 4;
+`
+
+export const SCModalTitle = styled.h1`
+  display: flex;
+  height: auto;
+  margin: 0;
+  margin-top: 20px;
+  font-size: 24px;
+  text-align: center;
 `
 
 export const SCModalText = styled.p`
@@ -29,7 +40,7 @@ export const SCModalText = styled.p`
 
 export const SCModalButtons = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: end;
   padding: 10px;
   width: 100%;
@@ -47,4 +58,3 @@ export const SCModalBackdrop = styled.div`
   z-index: 2;
   background: #00000050;
 `
-

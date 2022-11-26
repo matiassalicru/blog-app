@@ -1,4 +1,4 @@
-type ButtonVariants = 'danger' | 'primary' | 'secondary' 
+export type ButtonVariants = 'danger' | 'primary' | 'secondary' 
 
 
 export interface IButton {

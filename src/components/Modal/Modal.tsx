@@ -1,23 +1,39 @@
 import React from 'react'
+// Components
 import { Button } from '../Button/Button'
-import { SCModalButtons, SCModalContainer, SCModalText, SCModalBackdrop } from './styles'
+// Styles
+import {
+  SCModalButtons,
+  SCModalContainer,
+  SCModalText,
+  SCModalBackdrop,
+  SCModalTitle,
+} from './styles'
+// Types
+import { IModal } from './Modal.interface'
 
-
-interface IModal {
-  text: string
-  onClick?: () => void
-}
-
-export const Modal = ({text, onClick = () => true}: IModal) => {
+export const Modal = ({
+  text,
+  title = 'Title',
+  onSubmit,
+  onCancel,
+  submitButtonVariant = 'danger',
+}: IModal) => {
   return (
-    <SCModalBackdrop>
+    <>
       <SCModalContainer>
+        <SCModalTitle>{title}</SCModalTitle>
         <SCModalText>{text}</SCModalText>
         <SCModalButtons>
-          <Button onClick={onClick} text='Accept' />
-          <Button onClick={onClick} text='Cancel' variant='danger' />
+          <Button
+            onClick={onSubmit}
+            text='Delete'
+            variant={submitButtonVariant}
+          />
+          <Button onClick={onCancel} text='Cancel' variant='secondary' />
         </SCModalButtons>
       </SCModalContainer>
-    </SCModalBackdrop>
+      <SCModalBackdrop onClick={onCancel} />
+    </>
   )
 }
