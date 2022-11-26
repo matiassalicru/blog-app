@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 // Constants
-import { ACCENT_COLOR, BACKGROUND_SECONDARY_COLOR, DANGER_COLOR, SECONDARY_COLOR, WHITE_COLOR } from "../../styles/constants";
+import { ACCENT_COLOR, BACKGROUND_SECONDARY_COLOR, DANGER_COLOR, SECONDARY_COLOR, WHITE_COLOR } from '../../styles/constants';
 
 // Types
 import { IButtonStyles } from "./Button.interface";
@@ -45,11 +45,28 @@ export const SCButtonComponent = styled.button<IButtonStyles>`
         background-color: ${BACKGROUND_SECONDARY_COLOR};
         box-shadow: 2px 2px 2px 1px ${SECONDARY_COLOR};
       `
-      if (variant === 'danger') 
-      return css`
-        background-color: ${DANGER_COLOR};
-        color: ${WHITE_COLOR};
-      `
+    if (variant === 'danger') 
+    return css`
+      background-color: ${DANGER_COLOR};
+      color: ${WHITE_COLOR};
+    `
+    if (variant === 'roundedIcon')
+    return css`
+      background-color: ${ACCENT_COLOR};
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      border-radius: 50%;
+      width: 64px;
+      height: 64px;
+      border-color: ${ACCENT_COLOR} !important;
+
+      &:hover {
+        transform: translate(-4px, -4px);
+        box-shadow: 4px 4px 13px ${ACCENT_COLOR};
+      }
+    `
   }
 }
 `
