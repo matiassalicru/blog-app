@@ -1,4 +1,9 @@
-import React, { FunctionComponent, useCallback, useEffect, useState } from 'react'
+import React, {
+  FunctionComponent,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react'
 import { useRouter } from 'next/router'
 
 // Types
@@ -28,7 +33,7 @@ import { useSession } from 'next-auth/react'
 
 // Constants
 import { AUTHENTICATED } from 'src/utils/contants'
-
+import { Plus } from 'src/icons/Plus'
 
 export const Dashboard: NextPage = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -44,7 +49,7 @@ export const Dashboard: NextPage = () => {
   useEffect(() => {
     setIsAuthenticated(status === AUTHENTICATED)
   }, [status])
-  
+
   useEffect(() => {
     getPosts()
   }, [getPosts])
@@ -52,31 +57,34 @@ export const Dashboard: NextPage = () => {
   const router = useRouter()
 
   return (
-    <SCDashboardContainer>
-      <SCNavDashboard>
-        <SCDashTitle>Last posts</SCDashTitle>
-        {isAuthenticated && (
-          <SCButtonContainer>
-            <Button
-              onClick={() => router.push('/new/create-post')}
-              text='New post'
-            />
-          </SCButtonContainer>
-        )}
-      </SCNavDashboard>
-      {!!posts?.length
-        ? posts.map((post) => (
-            <SCPostContainer key={post.id}>
-              <PostPreview key={post._id} post={post} />
-              <SCSeparator />
-            </SCPostContainer>
-          ))
-        : skeletons.map((skeleton) => (
-            <SCPostContainer key={skeleton.id}>
-              <PostPreviewSkeleton />
-              <SCSeparator />
-            </SCPostContainer>
-          ))}
-    </SCDashboardContainer>
+    <>
+      {isAuthenticated && (
+        <SCButtonContainer>
+          <Button
+            onClick={() => router.push('/new/create-post')}
+            icon={<Plus height='32px' width='32px' variant='solid' />}
+            variant='roundedIcon'
+          />
+        </SCButtonContainer>
+      )}
+      <SCDashboardContainer>
+        <SCNavDashboard>
+          <SCDashTitle>Last posts</SCDashTitle>
+        </SCNavDashboard>
+        {!!posts?.length
+          ? posts.map((post) => (
+              <SCPostContainer key={post.id}>
+                <PostPreview key={post._id} post={post} />
+                <SCSeparator />
+              </SCPostContainer>
+            ))
+          : skeletons.map((skeleton) => (
+              <SCPostContainer key={skeleton.id}>
+                <PostPreviewSkeleton />
+                <SCSeparator />
+              </SCPostContainer>
+            ))}
+      </SCDashboardContainer>
+    </>
   )
 }

@@ -15,9 +15,9 @@ export const SCDashboardContainer = styled.div`
 `
 
 export const SCButtonContainer = styled.h1`
-  position: absolute;
-  top: 0px;
-  right: 30px;
+  position: fixed;
+  bottom: 0px;
+  right: 24px;
 `
 
 export const SCSeparator = styled.div`

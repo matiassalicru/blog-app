@@ -11,10 +11,11 @@ export const Button: FunctionComponent<IButton> = ({
   text,
   disabled = false,
   variant = 'primary',
+  icon,
 }) => {
   return (
     <SCButtonComponent onClick={onClick} disabled={disabled} variant={variant}>
-      {text}
+      {variant === 'roundedIcon' ? icon : text}
     </SCButtonComponent>
   )
 }
