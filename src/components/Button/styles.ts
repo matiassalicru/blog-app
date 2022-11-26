@@ -36,20 +36,24 @@ export const SCButtonComponent = styled.button<IButtonStyles>`
   }
 
   ${({ variant }) => {
+
     if (variant === 'primary') 
       return css`
         background-color: ${ACCENT_COLOR};
       `
+
     if (variant === 'secondary') 
       return css`
         background-color: ${BACKGROUND_SECONDARY_COLOR};
         box-shadow: 2px 2px 2px 1px ${SECONDARY_COLOR};
       `
+
     if (variant === 'danger') 
     return css`
       background-color: ${DANGER_COLOR};
       color: ${WHITE_COLOR};
     `
+
     if (variant === 'roundedIcon')
     return css`
       background-color: ${ACCENT_COLOR};
@@ -60,7 +64,7 @@ export const SCButtonComponent = styled.button<IButtonStyles>`
       border-radius: 50%;
       width: 64px;
       height: 64px;
-      border-color: ${ACCENT_COLOR} !important;
+      border-color: ${ACCENT_COLOR};
 
       &:hover {
         transform: translate(-4px, -4px);
