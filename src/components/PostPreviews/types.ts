@@ -6,3 +6,11 @@ export interface IPosts {
   title?: string
   text?: string
 }
+
+export interface IUser {
+  _id: string;
+  name: string;
+  email: string;
+  image: string;
+  emailVerified?: any;
+}

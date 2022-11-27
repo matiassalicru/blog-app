@@ -26,8 +26,23 @@ export const SCDeleteButtonContainer = styled.div`
   margin-top: 24px;
 `
 
-export const SCAuthorContainer = styled.div`
+export const SCAuthorContainer = styled.small`
   display: flex;
-  justify-content: space-between;
-  margin-top: 24px;
+  flex-direction: column;
+  align-items: flex-end;
+`
+
+export const SCAuthorName = styled.small`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  height: 30px;
+`
+
+export const SCAuthorEmail = styled.small`
+  display: flex;
+  align-items: center;
+  margin-left: 0px;
+  font-size: 10px;
 `

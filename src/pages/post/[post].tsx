@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 import { useSession } from 'next-auth/react'
 
 // Types
-import { IPosts } from '../../components/PostPreviews/types'
+import { IPosts, IUser } from '../../components/PostPreviews/types'
 
 // Component
 import { Button } from '../../components/Button/Button'
@@ -17,6 +17,8 @@ import {
   SCPostContent,
   SCPostTitle,
   SCPostText,
+  SCAuthorName,
+  SCAuthorEmail,
   SCAuthorContainer,
   SCDeleteButtonContainer,
 } from '../../styles/post/styles'
@@ -29,6 +31,7 @@ import { HOME_PATH } from 'src/utils/contants'
 
 const Post: NextPage = () => {
   const [post, setPost] = useState<IPosts>()
+  const [author, setAuthor] = useState<IUser>()
   const [showModal, setShowModal] = useState<boolean>(false)
   const { query, back, push } = useRouter()
   const { post: postId } = query
@@ -40,6 +43,11 @@ const Post: NextPage = () => {
   )
 
   // TODO: Move getData and handleDeletePost to hook
+  const getUserData = async (userId: string) => {
+    const { data: author } = await api.get(`/users/${userId}`)
+    setAuthor(author)
+  }
+
   const getData = async (postId: string | string[]) => {
     const { data: post } = await api.get(`/posts/${postId}`)
     setPost(post)
@@ -54,9 +62,13 @@ const Post: NextPage = () => {
   }
 
   useEffect(() => {
+    userData && post && getUserData(String(post.user_id))
+  }, [userData, post])
+
+  useEffect(() => {
     const { post: postId } = query
     postId && getData(postId)
-  }, [query])
+  }, [query, userData])
 
   const onBackButtonClick = () => {
     back()
@@ -79,10 +91,15 @@ const Post: NextPage = () => {
           onSubmit={handleDeletePost}
         />
       )}
+
       <SCAuthorContainer>
-        <small>
-          {post?.user_id} {isUserPost && <span>(you)</span>}
-        </small>
+        <SCAuthorName>
+          Author: {author ? author.name : 'Old legacy'}
+          {isUserPost && <p>(you)</p>}
+        </SCAuthorName>
+        <SCAuthorEmail>
+          {author ? author.email : 'oldlegacy@msalicru.com'}
+        </SCAuthorEmail>
       </SCAuthorContainer>
       <SCPostTitle>{post?.title}</SCPostTitle>
       <SCPostText>{post?.text}</SCPostText>

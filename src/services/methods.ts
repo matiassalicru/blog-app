@@ -1,21 +1,28 @@
 import clientPromise from 'src/services/mongodb'
-import { FindOptions } from 'mongodb'
+import { FindOptions, ObjectId } from 'mongodb'
+import { config } from 'config'
 
-const getDB = async () => {
+const getDB = async (DBCollectionName: string) => {
   const client = await clientPromise
   const db = client.db(process.env.DB_NAME)
-  const collection = db.collection(process.env.POSTS_COLLECTION_NAME as string)
+  const collection = db.collection(DBCollectionName)
   return collection
 }
 
+export const getUser = async (userId: string) => {
+  const collection = await getDB(config.USERS_COLLECTION_NAME)
+  const user = collection.findOne({ _id: new ObjectId(userId) });
+  return user
+}
+
 export const getPost = async (postId: number) => {
-  const collection = await getDB()
+  const collection = await getDB(config.POSTS_COLLECTION_NAME)
   const post = collection.findOne({ id: Number(postId) })
   return post
 }
 
 export const getPosts = async () => {
-  const collection = await getDB()
+  const collection = await getDB(config.POSTS_COLLECTION_NAME)
   // Options to sort documents from newer to older
   const options: FindOptions = {
     sort: { date: -1 },
@@ -32,7 +39,7 @@ export const getPosts = async () => {
 }
 
 export const createPost = async (postData: any) => {
-  const collection = await getDB()
+  const collection = await getDB(config.POSTS_COLLECTION_NAME)
 
   if (!postData) throw 'Invalid Data'
   const result = await collection.insertOne(postData)
@@ -41,14 +48,14 @@ export const createPost = async (postData: any) => {
 }
 
 export const deletePost = async (postId: number) => {
-  const collection = await getDB()
+  const collection = await getDB(config.POSTS_COLLECTION_NAME)
   const doc = collection.findOneAndDelete({ id: Number(postId) })
   return doc
 }
 
 export const getLastPostId = async () => {
   // Get data from your database
-  const collection = await getDB()
+  const collection = await getDB(config.POSTS_COLLECTION_NAME)
   // get last created item
   const cursor = collection.find({}).sort( [['_id', -1]] ).limit(1) 
   const formattedData = await cursor.toArray()
