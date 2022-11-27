@@ -86,12 +86,12 @@ const Post: NextPage = () => {
     <SCPostContent>
       {showModal && (
         <Modal
-          text='Are you sure about deleting the post?'
+          title='Delete Post'
+          text={`Are you sure about deleting your post?`}
           onCancel={handleCloseModal}
           onSubmit={handleDeletePost}
         />
       )}
-
       <SCAuthorContainer>
         <SCAuthorName>
           Author: {author ? author.name : 'Old legacy'}
@@ -105,7 +105,9 @@ const Post: NextPage = () => {
       <SCPostText>{post?.text}</SCPostText>
       <SCDeleteButtonContainer>
         <Button onClick={onBackButtonClick} text='Back' variant='secondary' />
-        <Button onClick={onDeletePost} text='Delete post' variant='danger' />
+        {isUserPost && (
+          <Button onClick={onDeletePost} text='Delete post' variant='danger' />
+        )}
       </SCDeleteButtonContainer>
     </SCPostContent>
   )
