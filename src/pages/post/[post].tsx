@@ -28,11 +28,14 @@ import api from 'src/services/api'
 
 // Constants
 import { HOME_PATH } from 'src/utils/contants'
+import { PostSkeleton } from 'src/components/Post/Skeleton/PostSkeleton'
 
 const Post: NextPage = () => {
   const [post, setPost] = useState<IPosts>()
   const [author, setAuthor] = useState<IUser | null>(null)
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>()
+  const [isPostLoading, setIsPostLoading] = useState<boolean>(true)
+  const [isAuthorLoading, setIsAuthorLoading] = useState<boolean>(true)
   const [showModal, setShowModal] = useState<boolean>(false)
   const { query, back, push } = useRouter()
   const { post: postId } = query
@@ -43,15 +46,17 @@ const Post: NextPage = () => {
     [userData, post]
   )
 
-  // TODO: Move getData and handleDeletePost to hook
+  // TODO: Move getUserData, getPostData and handleDeletePost to hook
   const getUserData = async (userId: string) => {
     const { data: author } = await api.get(`/users/${userId}`)
     setAuthor(author)
+    setIsAuthorLoading(false)
   }
 
-  const getData = async (postId: string | string[]) => {
+  const getPostData = async (postId: string | string[]) => {
     const { data: post } = await api.get(`/posts/${postId}`)
     setPost(post)
+    setIsPostLoading(false)
   }
 
   const handleDeletePost = async () => {
@@ -63,13 +68,13 @@ const Post: NextPage = () => {
   }
 
   useEffect(() => {
-    userData && post && getUserData(String(post.user_id))
+    post && getUserData(String(post.user_id))
     setIsAuthenticated(status === 'authenticated')
   }, [userData, post, status])
 
   useEffect(() => {
     const { post: postId } = query
-    postId && getData(postId)
+    postId && getPostData(postId)
   }, [query, userData])
 
   const onBackButtonClick = () => {
@@ -86,31 +91,45 @@ const Post: NextPage = () => {
 
   return (
     <SCPostContent>
-      {showModal && (
-        <Modal
-          title='Delete Post'
-          text={`Are you sure about deleting your post?`}
-          onCancel={handleCloseModal}
-          onSubmit={handleDeletePost}
-        />
+      {!isPostLoading && !isAuthorLoading ? (
+        <>
+          {showModal && (
+            <Modal
+              title='Delete Post'
+              text={`Are you sure about deleting your post?`}
+              onCancel={handleCloseModal}
+              onSubmit={handleDeletePost}
+            />
+          )}
+          <SCAuthorContainer>
+            <SCAuthorName>
+              Author: {author ? author.name : 'Legacy user'}
+              {isAuthenticated && isUserPost && <p>(you)</p>}
+            </SCAuthorName>
+            <SCAuthorEmail>
+              {author ? author.email : 'legacyuser@msalicru.com'}
+            </SCAuthorEmail>
+          </SCAuthorContainer>
+          <SCPostTitle>{post?.title}</SCPostTitle>
+          <SCPostText>{post?.text}</SCPostText>
+          <SCDeleteButtonContainer>
+            <Button
+              onClick={onBackButtonClick}
+              text='Back'
+              variant='secondary'
+            />
+            {isUserPost && isAuthenticated && (
+              <Button
+                onClick={onDeletePost}
+                text='Delete post'
+                variant='danger'
+              />
+            )}
+          </SCDeleteButtonContainer>
+        </>
+      ) : (
+        <PostSkeleton />
       )}
-      <SCAuthorContainer>
-        <SCAuthorName>
-          Author: {author ? author.name : 'Old legacy'}
-          {isAuthenticated && isUserPost && <p>(you)</p>}
-        </SCAuthorName>
-        <SCAuthorEmail>
-          {author ? author.email : 'oldlegacy@msalicru.com'}
-        </SCAuthorEmail>
-      </SCAuthorContainer>
-      <SCPostTitle>{post?.title}</SCPostTitle>
-      <SCPostText>{post?.text}</SCPostText>
-      <SCDeleteButtonContainer>
-        <Button onClick={onBackButtonClick} text='Back' variant='secondary' />
-        {isUserPost && isAuthenticated && (
-          <Button onClick={onDeletePost} text='Delete post' variant='danger' />
-        )}
-      </SCDeleteButtonContainer>
     </SCPostContent>
   )
 }
