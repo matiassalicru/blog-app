@@ -1,9 +1,6 @@
 import { NextPage } from 'next'
 import { getSession, GetSessionParams } from 'next-auth/react'
 
-// Types
-import { ISessionProps } from 'src/types/globalTypes.interface'
-
 // Components
 import { Dashboard } from '../components/Dashboard/Dashboard'
 import { InfoTile } from '../components/InfoTile/InfoTile'
@@ -11,8 +8,7 @@ import { InfoTile } from '../components/InfoTile/InfoTile'
 // Styles
 import { SCIndexMain, SCIndexContent } from '../styles'
 
-
-const Home: NextPage<ISessionProps> = ({ session }) => {
+const Home: NextPage = () => {
   return (
     <SCIndexMain>
       <SCIndexContent>
@@ -25,12 +21,11 @@ const Home: NextPage<ISessionProps> = ({ session }) => {
 
 export default Home
 
-
-export const getServerSideProps =  async (context: GetSessionParams) => {
+export const getServerSideProps = async (context: GetSessionParams) => {
   const session = await getSession(context)
   return {
     props: {
-      session: session 
-    }
+      session: session,
+    },
   }
 }

@@ -1,24 +1,19 @@
+import { DefaultSession } from "next-auth";
 
-export interface IUser {
-  name: string;
-  image: string;
-  email: string;
-}
-
-export interface ISessionProps {
-  session: ISession
-}
-
-export interface ISession {
-  expires: string;
-  user: IUser
+declare module 'next-auth' {
+  interface Session {
+    user: {
+      /** The user's id. */
+      id: string
+    } & DefaultSession['user']
+  }
 }
 
 export interface IPost {
   title: string
   text: string
   topic: string
-  user_id: number
+  user_id: string
   date: Date
   id: number
 }
