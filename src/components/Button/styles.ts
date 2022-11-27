@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 // Constants
-import { ACCENT_COLOR, BACKGROUND_SECONDARY_COLOR, DANGER_COLOR, SECONDARY_COLOR, WHITE_COLOR } from '../../styles/constants';
+import { ACCENT_COLOR, BACKGROUND_SECONDARY_COLOR, DANGER_COLOR, SECONDARY_COLOR, WHITE_COLOR, BACKGROUND_COLOR } from '../../styles/constants';
 
 // Types
 import { IButtonStyles } from "./Button.interface";
@@ -64,7 +64,7 @@ export const SCButtonComponent = styled.button<IButtonStyles>`
       border-radius: 50%;
       width: 64px;
       height: 64px;
-      border-color: ${ACCENT_COLOR};
+      border-color: ${BACKGROUND_COLOR};
 
       &:hover {
         transform: translate(-4px, -4px);
