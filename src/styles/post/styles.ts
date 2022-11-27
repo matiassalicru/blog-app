@@ -25,3 +25,9 @@ export const SCDeleteButtonContainer = styled.div`
   justify-content: space-between;
   margin-top: 24px;
 `
+
+export const SCAuthorContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+`

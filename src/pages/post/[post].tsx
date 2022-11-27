@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
+
+// Next
 import { NextPage } from 'next'
 import { useRouter } from 'next/router'
+import { useSession } from 'next-auth/react'
 
 // Types
 import { IPosts } from '../../components/PostPreviews/types'
@@ -14,6 +17,7 @@ import {
   SCPostContent,
   SCPostTitle,
   SCPostText,
+  SCAuthorContainer,
   SCDeleteButtonContainer,
 } from '../../styles/post/styles'
 
@@ -28,6 +32,12 @@ const Post: NextPage = () => {
   const [showModal, setShowModal] = useState<boolean>(false)
   const { query, back, push } = useRouter()
   const { post: postId } = query
+  const { data: userData } = useSession()
+
+  const isUserPost = useMemo(
+    () => userData?.user?.id === post?.user_id,
+    [userData, post]
+  )
 
   // TODO: Move getData and handleDeletePost to hook
   const getData = async (postId: string | string[]) => {
@@ -69,6 +79,11 @@ const Post: NextPage = () => {
           onSubmit={handleDeletePost}
         />
       )}
+      <SCAuthorContainer>
+        <small>
+          {post?.user_id} {isUserPost && <span>(you)</span>}
+        </small>
+      </SCAuthorContainer>
       <SCPostTitle>{post?.title}</SCPostTitle>
       <SCPostText>{post?.text}</SCPostText>
       <SCDeleteButtonContainer>
