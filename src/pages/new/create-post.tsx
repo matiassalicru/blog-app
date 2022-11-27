@@ -34,7 +34,7 @@ const CreatePost: NextPage = () => {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
 
-  const { status } = useSession()
+  const { status, data: userData } = useSession()
 
   useEffect(() => {
     setIsAuthenticated(status === AUTHENTICATED)
@@ -54,17 +54,22 @@ const CreatePost: NextPage = () => {
   const onSubmitPost = async () => {
     const lastPostId = await getLastPostId()
 
-    if (isValidFormat(title, description, lastPostId)) {
+    if (
+      isValidFormat(title, description, lastPostId) &&
+      isAuthenticated &&
+      userData?.user
+    ) {
+      const { user } = userData
       const post: IPost = {
         title,
         text: description,
         topic: 'Test',
-        user_id: 123,
+        user_id: user.id,
         date: new Date(),
         id: lastPostId + 1,
       }
 
-      const newPostIsCreated = await createNewPost(post) 
+      const newPostIsCreated = await createNewPost(post)
 
       if (newPostIsCreated) {
         // TODO: Create a better alert
@@ -73,6 +78,7 @@ const CreatePost: NextPage = () => {
 
       setTitle('')
       setDescription('')
+      router.push('/')
     } else {
       alert('error')
     }
