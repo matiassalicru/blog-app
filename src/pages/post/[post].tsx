@@ -31,11 +31,12 @@ import { HOME_PATH } from 'src/utils/contants'
 
 const Post: NextPage = () => {
   const [post, setPost] = useState<IPosts>()
-  const [author, setAuthor] = useState<IUser>()
+  const [author, setAuthor] = useState<IUser | null>(null)
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>()
   const [showModal, setShowModal] = useState<boolean>(false)
   const { query, back, push } = useRouter()
   const { post: postId } = query
-  const { data: userData } = useSession()
+  const { status, data: userData } = useSession()
 
   const isUserPost = useMemo(
     () => userData?.user?.id === post?.user_id,
@@ -63,7 +64,8 @@ const Post: NextPage = () => {
 
   useEffect(() => {
     userData && post && getUserData(String(post.user_id))
-  }, [userData, post])
+    setIsAuthenticated(status === 'authenticated')
+  }, [userData, post, status])
 
   useEffect(() => {
     const { post: postId } = query
@@ -95,7 +97,7 @@ const Post: NextPage = () => {
       <SCAuthorContainer>
         <SCAuthorName>
           Author: {author ? author.name : 'Old legacy'}
-          {isUserPost && <p>(you)</p>}
+          {isAuthenticated && isUserPost && <p>(you)</p>}
         </SCAuthorName>
         <SCAuthorEmail>
           {author ? author.email : 'oldlegacy@msalicru.com'}
@@ -105,7 +107,7 @@ const Post: NextPage = () => {
       <SCPostText>{post?.text}</SCPostText>
       <SCDeleteButtonContainer>
         <Button onClick={onBackButtonClick} text='Back' variant='secondary' />
-        {isUserPost && (
+        {isUserPost && isAuthenticated && (
           <Button onClick={onDeletePost} text='Delete post' variant='danger' />
         )}
       </SCDeleteButtonContainer>
