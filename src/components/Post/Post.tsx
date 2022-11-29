@@ -27,7 +27,7 @@ import { AUTHENTICATED } from '../../utils/contants'
 
 export const Post: NextPage = () => {
   const [showModal, setShowModal] = useState<boolean>(false)
-  const { query, back } = useRouter()
+  const { query, push } = useRouter()
   const { status, data: userData } = useSession()
 
   const { post, isPostLoading, getPostData, handleDeletePost } = usePost()
@@ -56,7 +56,7 @@ export const Post: NextPage = () => {
   }, [query, userData])
 
   const onBackButtonClick = () => {
-    back()
+    push('/')
   }
 
   const onDeletePost = () => {
