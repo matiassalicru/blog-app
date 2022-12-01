@@ -6,12 +6,13 @@ import { IButton } from './Button.interface'
 // Styles
 import { SCButtonComponent } from './styles'
 
-export const Button: FunctionComponent<IButton> = ({
+export const Button: FunctionComponent<IButton > = ( {
   onClick,
   text,
   disabled = false,
   variant = 'primary',
-  icon,
+  icon
+
 }) => {
   return (
     <SCButtonComponent onClick={onClick} disabled={disabled} variant={variant}>
