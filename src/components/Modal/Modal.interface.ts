@@ -1,4 +1,4 @@
-import { ButtonVariants } from "../Button/Button.interface"
+import { ButtonVariants } from '../Button/Button.interface'
 
 export interface IModal {
   text: string

@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { ACCENT_COLOR } from "src/styles/constants";
+import styled from 'styled-components'
+import { ACCENT_COLOR } from 'src/styles/constants'
 
 export const SCInfoTileContainer = styled.div`
   background-color: ${ACCENT_COLOR};
@@ -39,6 +39,6 @@ export const SCInfoTileDescription = styled.p`
   align-items: center;
   justify-content: center;
   width: 100%;
-  text-align: center; 
-  padding: 0 4px
+  text-align: center;
+  padding: 0 4px;
 `

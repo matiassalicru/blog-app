@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useMemo, useState } from 'react'
 
 // Next
@@ -6,8 +5,8 @@ import { NextPage } from 'next'
 import { useRouter } from 'next/router'
 import { useSession } from 'next-auth/react'
 // Component
-import { Button } from '../../components/Button/Button'
-import { Modal } from '../../components/Modal/Modal'
+import { Button } from '../Button/Button'
+import { Modal } from '../Modal/Modal'
 import { PostSkeleton } from './Skeleton/PostSkeleton'
 // Styles
 import {
@@ -32,18 +31,9 @@ export const Post: NextPage = () => {
 
   const { post, isPostLoading, getPostData, handleDeletePost } = usePost()
 
-  const {
-    author,
-    getUserData,
-    isAuthorLoading,
-    isAuthenticated,
-    setIsAuthenticated,
-  } = useUser()
+  const { author, getUserData, isAuthorLoading, isAuthenticated, setIsAuthenticated } = useUser()
 
-  const isUserPost = useMemo(
-    () => userData?.user?.id === post?.user_id,
-    [userData, post]
-  )
+  const isUserPost = useMemo(() => userData?.user?.id === post?.user_id, [userData, post])
 
   useEffect(() => {
     post && getUserData(String(post.user_id))
@@ -73,8 +63,8 @@ export const Post: NextPage = () => {
         <>
           {showModal && (
             <Modal
-              title='Delete Post'
-              text={`Are you sure about deleting your post?`}
+              title="Delete Post"
+              text="Are you sure about deleting your post?"
               onCancel={handleCloseModal}
               onSubmit={handleDeletePost}
             />
@@ -84,25 +74,13 @@ export const Post: NextPage = () => {
               Author: {author ? author.name : 'Legacy user'}
               {isAuthenticated && isUserPost && <p>(you)</p>}
             </SCAuthorName>
-            <SCAuthorEmail>
-              {author ? author.email : 'legacyuser@msalicru.com'}
-            </SCAuthorEmail>
+            <SCAuthorEmail>{author ? author.email : 'legacyuser@msalicru.com'}</SCAuthorEmail>
           </SCAuthorContainer>
           <SCPostTitle>{post?.title}</SCPostTitle>
           <SCPostText>{post?.text}</SCPostText>
           <SCDeleteButtonContainer>
-            <Button
-              onClick={onBackButtonClick}
-              text='Back'
-              variant='secondary'
-            />
-            {isUserPost && isAuthenticated && (
-              <Button
-                onClick={onDeletePost}
-                text='Delete post'
-                variant='danger'
-              />
-            )}
+            <Button onClick={onBackButtonClick} text="Back" variant="secondary" />
+            {isUserPost && isAuthenticated && <Button onClick={onDeletePost} text="Delete post" variant="danger" />}
           </SCDeleteButtonContainer>
         </>
       ) : (

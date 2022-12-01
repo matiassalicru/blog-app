@@ -8,9 +8,9 @@ export interface IPosts {
 }
 
 export interface IUser {
-  _id: string;
-  name: string;
-  email: string;
-  image: string;
-  emailVerified?: any;
+  _id: string
+  name: string
+  email: string
+  image: string
+  emailVerified?: any
 }

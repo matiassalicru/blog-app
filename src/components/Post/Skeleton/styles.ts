@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled, { keyframes } from 'styled-components'
 
 const aniHorizontal = keyframes`
   0% {
@@ -64,7 +64,6 @@ export const SCSkeletonContent = styled.div`
   background: linear-gradient(to right, #fcfcfc 2%, #f1f1f1 18%, #fcfcfc 33%);
   background-size: 50%;
 `
-
 
 export const SCSkeletonButtons = styled.div`
   display: flex;

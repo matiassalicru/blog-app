@@ -6,6 +6,7 @@ import { SCPostContainer, SCPostTitle, SCPostText } from './styles'
 
 // Types
 import { IPosts } from './types'
+
 interface TypePost {
   post: IPosts
 }

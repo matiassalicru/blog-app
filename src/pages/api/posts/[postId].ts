@@ -1,7 +1,7 @@
 // METHODS
 import { deletePost, getPost } from 'src/services/methods'
 
-const handler = async( req: any, res: any ) => {
+const handler = async (req: any, res: any) => {
   const {
     query: { postId },
     method,
@@ -14,7 +14,7 @@ const handler = async( req: any, res: any ) => {
         const doc = await getPost(postId)
         res.status(200).json(doc)
       } catch (error) {
-        res.status(500).json({ success: false, error})
+        res.status(500).json({ success: false, error })
       }
       break
     case 'DELETE':
@@ -23,10 +23,11 @@ const handler = async( req: any, res: any ) => {
         const doc = await deletePost(postId)
         res.status(200).json(doc)
       } catch (error) {
-        res.status(500).json({ success: false, error})
+        res.status(500).json({ success: false, error })
       }
+      break
     default:
-      break;
+      break
   }
 }
 

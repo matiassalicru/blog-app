@@ -1,9 +1,9 @@
-import { useState } from "react"
+import { useState } from 'react'
 
 // Services
-import api from "../../../services/api"
+import api from '../../../services/api'
 // Types
-import { IUser } from '../../PostPreviews/types';
+import { IUser } from '../../PostPreviews/types'
 
 export const useUser = () => {
   const [author, setAuthor] = useState<IUser | null>(null)
@@ -11,10 +11,10 @@ export const useUser = () => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>()
 
   const getUserData = async (userId: string) => {
-    const { data: author } = await api.get(`/users/${userId}`)
-    setAuthor(author)
+    const { data: authorData } = await api.get(`/users/${userId}`)
+    setAuthor(authorData)
     setIsAuthorLoading(false)
   }
 
-  return ({author, isAuthorLoading, setIsAuthenticated, isAuthenticated, getUserData})
+  return { author, isAuthorLoading, setIsAuthenticated, isAuthenticated, getUserData }
 }

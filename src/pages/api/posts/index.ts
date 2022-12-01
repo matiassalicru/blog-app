@@ -4,8 +4,7 @@ import { getPosts, createPost } from 'src/services/methods'
 // Types
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-const handler = async( req: NextApiRequest, res: NextApiResponse ) => {
-  
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method } = req
 
   switch (method) {
@@ -16,9 +15,9 @@ const handler = async( req: NextApiRequest, res: NextApiResponse ) => {
         res.status(200).json({ success: true, data: posts })
       } catch (error) {
         console.error(error)
-        res.status(500).json({ success: false, error})
+        res.status(500).json({ success: false, error })
       }
-      break;
+      break
     case 'POST':
       // Create new post
       try {
@@ -28,8 +27,9 @@ const handler = async( req: NextApiRequest, res: NextApiResponse ) => {
       } catch (error) {
         res.status(500).json({ err: 'There was an error writing on the DB' })
       }
+      break
     default:
-      break;
+      break
   }
 }
 

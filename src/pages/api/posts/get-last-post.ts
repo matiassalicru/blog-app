@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 // Types
 import type { NextApiRequest, NextApiResponse } from 'next'
 
@@ -11,8 +12,8 @@ const getLastPostHandler = async (req: NextApiRequest, res: NextApiResponse) => 
   switch (method) {
     case 'GET':
       // Get data from your database
-        const data = await getLastPostId()
-        res.status(200).json(data)
+      const data = await getLastPostId()
+      res.status(200).json(data)
       break
     default:
       res.setHeader('Allow', ['GET'])

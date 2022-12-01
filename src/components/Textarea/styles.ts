@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { SECONDARY_COLOR } from "src/styles/constants";
+import styled from 'styled-components'
+import { SECONDARY_COLOR } from 'src/styles/constants'
 
 export const SCTextareaComponent = styled.textarea`
   width: 100%;
@@ -9,4 +9,4 @@ export const SCTextareaComponent = styled.textarea`
   margin: 5px 0;
   font-family: 'Maven Pro';
   font-size: 16px;
-` 
+`

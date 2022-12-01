@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 // Constants
-import { ACCENT_COLOR } from "src/styles/constants";
+import { ACCENT_COLOR } from 'src/styles/constants'
 
 export const SCDashboardContainer = styled.div`
   position: relative;

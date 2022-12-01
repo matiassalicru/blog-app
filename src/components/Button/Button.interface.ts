@@ -1,6 +1,7 @@
-import { ReactElement } from 'react';
+import { ReactElement } from 'react'
 // Types
-import { IconsProps } from 'src/icons/icons.interface';
+import { IconsProps } from 'src/icons/icons.interface'
+
 export type ButtonVariants = 'danger' | 'primary' | 'secondary' | 'roundedIcon'
 
 export interface IButton {

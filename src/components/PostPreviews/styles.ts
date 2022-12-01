@@ -10,7 +10,7 @@ export const SCPostContainer = styled.div`
   margin: 10px 20px;
   cursor: pointer;
   border-radius: 10px;
-  transition: all .3s;
+  transition: all 0.3s;
 
   &:hover {
     box-shadow: 0px 0px 10px #c2c2c2;
@@ -33,4 +33,3 @@ export const SCPostText = styled.p`
   margin: 0;
   align-self: flex-start;
 `
-

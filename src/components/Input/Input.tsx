@@ -19,12 +19,6 @@ export const Input: FunctionComponent<InputTypes> = ({
   onChange = () => true,
 }) => {
   return (
-    <SCInputComponent
-      type={type}
-      value={value}
-      onChange={onChange}
-      autoFocus={autoFocus}
-      placeholder={placeholder}
-    />
+    <SCInputComponent type={type} value={value} onChange={onChange} autoFocus={autoFocus} placeholder={placeholder} />
   )
 }

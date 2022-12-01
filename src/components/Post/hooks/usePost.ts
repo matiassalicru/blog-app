@@ -1,12 +1,12 @@
-import { useState } from 'react';
+import { useState } from 'react'
 // Types
-import { IPosts } from '../../PostPreviews/types';
 // Services
-import api from 'src/services/api';
+import api from 'src/services/api'
 // Hooks
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/router'
+import { IPosts } from '../../PostPreviews/types'
 // Constants
-import { HOME_PATH } from '../../../utils/contants';
+import { HOME_PATH } from '../../../utils/contants'
 
 export const usePost = () => {
   const [post, setPost] = useState<IPosts>()
@@ -14,9 +14,9 @@ export const usePost = () => {
   const { query, push } = useRouter()
   const { post: postId } = query
 
-  const getPostData = async (postId: string | string[]) => {
-    const { data: post } = await api.get(`/posts/${postId}`)
-    setPost(post)
+  const getPostData = async (postID: string | string[]) => {
+    const { data: postData } = await api.get(`/posts/${postID}`)
+    setPost(postData)
     setIsPostLoading(false)
   }
 
@@ -28,10 +28,10 @@ export const usePost = () => {
     push(HOME_PATH)
   }
 
-  return ({
+  return {
     post,
     getPostData,
     isPostLoading,
-    handleDeletePost
-  })
+    handleDeletePost,
+  }
 }
