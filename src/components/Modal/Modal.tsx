@@ -2,13 +2,7 @@ import React from 'react'
 // Components
 import { Button } from '../Button/Button'
 // Styles
-import {
-  SCModalButtons,
-  SCModalContainer,
-  SCModalText,
-  SCModalBackdrop,
-  SCModalTitle,
-} from './styles'
+import { SCModalButtons, SCModalContainer, SCModalText, SCModalBackdrop, SCModalTitle } from './styles'
 // Types
 import { IModal } from './Modal.interface'
 
@@ -25,12 +19,8 @@ export const Modal: React.FC<IModal> = ({
         <SCModalTitle>{title}</SCModalTitle>
         <SCModalText>{text}</SCModalText>
         <SCModalButtons>
-          <Button
-            onClick={onSubmit}
-            text='Delete'
-            variant={submitButtonVariant}
-          />
-          <Button onClick={onCancel} text='Cancel' variant='secondary' />
+          <Button onClick={onSubmit} text="Delete" variant={submitButtonVariant} />
+          <Button onClick={onCancel} text="Cancel" variant="secondary" />
         </SCModalButtons>
       </SCModalContainer>
       <SCModalBackdrop onClick={onCancel} />

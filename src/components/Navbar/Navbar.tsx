@@ -2,15 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
 // Session
-import {
-  getSession,
-  GetSessionParams,
-  useSession,
-  signOut,
-  signIn,
-} from 'next-auth/react'
+import { getSession, GetSessionParams, useSession, signOut, signIn } from 'next-auth/react'
 
 // Styles
+import { AUTHENTICATED, GITHUB_SIGN_IN, HOME_PATH, LOADING } from 'src/utils/contants'
 import {
   SCNavContainer,
   SCLink,
@@ -24,9 +19,8 @@ import {
 } from './styles'
 
 // Constants
-import { AUTHENTICATED, GITHUB_SIGN_IN, HOME_PATH, LOADING } from 'src/utils/contants'
 
-export const Navbar = () => {
+export function Navbar() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const { data, status } = useSession()
@@ -57,10 +51,7 @@ export const Navbar = () => {
         </SCButtonLink>
       </SCRightContent>
       <SCLeftContent>
-        <SCLink
-          href='https://matiassalicru.vercel.app'
-          target='_blank'
-          rel='noopener noreferrer'>
+        <SCLink href="https://matiassalicru.vercel.app" target="_blank" rel="noopener noreferrer">
           Go to portfolio
         </SCLink>
         {isLoading ? (
@@ -68,12 +59,8 @@ export const Navbar = () => {
         ) : (
           <SCButtonLink>
             <SCSignOut onClick={onLogInOut}>
-              <SCSignTitle>
-                {isAuthenticated ? 'Sign out' : 'Sign In'}
-              </SCSignTitle>
-              {isAuthenticated && data && (
-                <SCUserImage loading='lazy' src={data.user?.image || ''} />
-              )}
+              <SCSignTitle>{isAuthenticated ? 'Sign out' : 'Sign In'}</SCSignTitle>
+              {isAuthenticated && data && <SCUserImage loading="lazy" src={data.user?.image || ''} />}
             </SCSignOut>
           </SCButtonLink>
         )}
@@ -86,7 +73,7 @@ export const getServerSideProps = async (context: GetSessionParams) => {
   const session = await getSession(context)
   return {
     props: {
-      session: session,
+      session,
     },
   }
 }

@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { BACKGROUND_SECONDARY_COLOR, SECONDARY_COLOR } from "src/styles/constants";
+import styled from 'styled-components'
+import { BACKGROUND_SECONDARY_COLOR } from 'src/styles/constants'
 
 export const SCNavContainer = styled.div`
   display: flex;
@@ -54,8 +54,8 @@ export const SCSignOut = styled.div`
 `
 
 export const SCSignTitle = styled.p`
-    margin: 5px 0;
-    padding: 0;
+  margin: 5px 0;
+  padding: 0;
 `
 
 export const SCButtonLink = styled.div`

@@ -2,11 +2,7 @@ import React from 'react'
 import { fireEvent, render } from '@testing-library/react'
 // Components
 import { Button } from './Button'
-import {
-  ACCENT_COLOR,
-  BACKGROUND_SECONDARY_COLOR,
-  DANGER_COLOR,
-} from '../../styles/constants'
+import { ACCENT_COLOR, BACKGROUND_SECONDARY_COLOR, DANGER_COLOR } from '../../styles/constants'
 
 const setup = (mock = {}) => render(<Button onClick={jest.fn()} {...mock} />)
 
@@ -71,8 +67,6 @@ describe('<Button/>', () => {
   it("Should have 'BACKGROUND_SECONDARY_COLOR' as background color is we pass the variant 'secondary'", () => {
     const { getByRole } = setup({ variant: 'secondary' })
     const button = getByRole('button')
-    expect(button).toHaveStyle(
-      `background-color: ${BACKGROUND_SECONDARY_COLOR}`
-    )
+    expect(button).toHaveStyle(`background-color: ${BACKGROUND_SECONDARY_COLOR}`)
   })
 })

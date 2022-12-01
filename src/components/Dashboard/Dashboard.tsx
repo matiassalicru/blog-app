@@ -1,14 +1,12 @@
-import React, {
-  FunctionComponent,
-  useCallback,
-  useEffect,
-  useState,
-} from 'react'
+/* eslint-disable @typescript-eslint/indent */
+import React, { useCallback, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
 // Types
-import { IPosts } from '../PostPreviews/types'
 import { NextPage } from 'next'
+import { useSession } from 'next-auth/react'
+import { AUTHENTICATED } from 'src/utils/contants'
+import { IPosts } from '../PostPreviews/types'
 
 // UIComponents
 import { PostPreviewSkeleton } from '../PostPreviews/Skeleton/PostPreviewSkeleton'
@@ -32,10 +30,8 @@ import {
 import { getData } from './utils'
 
 // Auth
-import { useSession } from 'next-auth/react'
 
 // Constants
-import { AUTHENTICATED } from 'src/utils/contants'
 
 export const Dashboard: NextPage = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -44,8 +40,8 @@ export const Dashboard: NextPage = () => {
   const { status } = useSession()
 
   const getPosts = useCallback(async () => {
-    const posts = await getData()
-    setPosts(posts)
+    const postsData = await getData()
+    setPosts(postsData)
   }, [])
 
   useEffect(() => {
@@ -64,8 +60,8 @@ export const Dashboard: NextPage = () => {
         <SCButtonContainer>
           <Button
             onClick={() => router.push('/new/create-post')}
-            icon={<Plus height='32px' width='32px' variant='solid' />}
-            variant='roundedIcon'
+            icon={<Plus height="32px" width="32px" variant="solid" />}
+            variant="roundedIcon"
           />
         </SCButtonContainer>
       )}
@@ -73,14 +69,14 @@ export const Dashboard: NextPage = () => {
         <SCNavDashboard>
           <SCDashTitle>Last posts</SCDashTitle>
         </SCNavDashboard>
-        {!!posts?.length
-          ? posts.map((post) => (
+        {posts?.length
+          ? posts.map(post => (
               <SCPostContainer key={post.id}>
                 <PostPreview key={post._id} post={post} />
                 <SCSeparator />
               </SCPostContainer>
             ))
-          : skeletons.map((skeleton) => (
+          : skeletons.map(skeleton => (
               <SCPostContainer key={skeleton.id}>
                 <PostPreviewSkeleton />
                 <SCSeparator />

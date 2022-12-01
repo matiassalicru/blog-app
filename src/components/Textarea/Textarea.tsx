@@ -17,12 +17,6 @@ export const Textarea: FunctionComponent<TextareaTypes> = ({
   onChange = () => true,
 }) => {
   return (
-    <SCTextareaComponent
-      rows={6}
-      value={value}
-      onChange={onChange}
-      autoFocus={autoFocus}
-      placeholder={placeholder}
-    />
+    <SCTextareaComponent rows={6} value={value} onChange={onChange} autoFocus={autoFocus} placeholder={placeholder} />
   )
 }

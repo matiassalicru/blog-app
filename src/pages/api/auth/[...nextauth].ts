@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import NextAuth from 'next-auth/next'
 import GithubProvider from 'next-auth/providers/github'
 import { MongoDBAdapter } from '@next-auth/mongodb-adapter'

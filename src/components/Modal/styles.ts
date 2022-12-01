@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 // Constants
-import { PRIMARY_COLOR, SECONDARY_COLOR, BACKGROUND_SECONDARY_COLOR } from "../../styles/constants";
+import { PRIMARY_COLOR, SECONDARY_COLOR, BACKGROUND_SECONDARY_COLOR } from '../../styles/constants'
 
 export const SCModalContainer = styled.div`
   position: absolute;
@@ -19,7 +19,7 @@ export const SCModalContainer = styled.div`
   border-radius: 10px;
   width: 450px;
   max-height: 200px;
-  height: auto;;
+  height: auto;
   opacity: 1;
   box-shadow: 2px 2px 8px ${SECONDARY_COLOR};
   z-index: 4;

@@ -3,16 +3,10 @@ import { SCInfoTileContainer, SCInfoTileTitle, SCInfoTilePhoto, SCInfoTileDescri
 export const InfoTile = () => {
   return (
     <SCInfoTileContainer>
-      <SCInfoTileTitle>
-        Sobre mí
-      </SCInfoTileTitle>
+      <SCInfoTileTitle>Sobre mí</SCInfoTileTitle>
       <SCInfoTilePhoto />
-      <SCInfoTileDescription>
-        I&apos;m Matías Salicrú, +2 years Frontend developer 
-      </SCInfoTileDescription>
-      <SCInfoTileDescription>
-        Here you can find some posts about interesting topics for me
-      </SCInfoTileDescription>
+      <SCInfoTileDescription>I&apos;m Matías Salicrú, +2 years Frontend developer</SCInfoTileDescription>
+      <SCInfoTileDescription>Here you can find some posts about interesting topics for me</SCInfoTileDescription>
     </SCInfoTileContainer>
   )
 }
