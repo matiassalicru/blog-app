@@ -10,9 +10,12 @@ const getDB = async (DBCollectionName: string) => {
 }
 
 export const getUser = async (userId: string) => {
-  const collection = await getDB(config.USERS_COLLECTION_NAME)
-  const user = collection.findOne({ _id: new ObjectId(userId) });
-  return user
+  if (ObjectId.isValid(userId)) {
+    const collection = await getDB(config.USERS_COLLECTION_NAME)
+    const user = collection.findOne({ _id: new ObjectId(userId) })
+    return user
+  }
+  return null
 }
 
 export const getPost = async (postId: number) => {
@@ -41,9 +44,9 @@ export const getPosts = async () => {
 export const createPost = async (postData: any) => {
   const collection = await getDB(config.POSTS_COLLECTION_NAME)
 
-  if (!postData) throw 'Invalid Data'
+  if (!postData) return 'Invalid Data'
   const result = await collection.insertOne(postData)
-  
+
   return result
 }
 
@@ -57,7 +60,10 @@ export const getLastPostId = async () => {
   // Get data from your database
   const collection = await getDB(config.POSTS_COLLECTION_NAME)
   // get last created item
-  const cursor = collection.find({}).sort( [['_id', -1]] ).limit(1) 
+  const cursor = collection
+    .find({})
+    .sort([['_id', -1]])
+    .limit(1)
   const formattedData = await cursor.toArray()
 
   return formattedData[0].id
