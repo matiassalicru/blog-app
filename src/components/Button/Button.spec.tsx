@@ -2,7 +2,11 @@ import React from 'react'
 import { fireEvent, render } from '@testing-library/react'
 // Components
 import { Button } from './Button'
-import { ACCENT_COLOR, DANGER_COLOR } from '../../styles/constants'
+import {
+  ACCENT_COLOR,
+  BACKGROUND_SECONDARY_COLOR,
+  DANGER_COLOR,
+} from '../../styles/constants'
 
 const setup = (mock = {}) => render(<Button onClick={jest.fn()} {...mock} />)
 
@@ -37,22 +41,38 @@ describe('<Button/>', () => {
     expect(button).toBeDisabled()
   })
 
-  it('Should be rounded is we pass the variant "roundedIcon"', () => {
-    const { getByRole } = setup({ variant: 'roundedIcon' })
-    const button = getByRole('button')
-    expect(button).toHaveStyle('width: 64px')
-    expect(button).toHaveStyle('border-radius: 50%')
-  })
-
   it("Should have accent color is we DON'T pass the variant prop", () => {
     const { getByRole } = setup()
     const button = getByRole('button')
     expect(button).toHaveStyle(`background-color: ${ACCENT_COLOR}`)
   })
 
-  it('Should have danger color is we pass the variant "danger"', () => {
+  it('Should have accent color is we pass the variant "primary"', () => {
+    const { getByRole } = setup({ variant: 'primary' })
+    const button = getByRole('button')
+    expect(button).toHaveStyle(`border-radius: 8px`)
+    expect(button).toHaveStyle(`background-color: ${ACCENT_COLOR}`)
+  })
+
+  it('Should be rounded is we pass the variant "roundedIcon"', () => {
+    const { getByRole } = setup({ variant: 'roundedIcon' })
+    const button = getByRole('button')
+    expect(button).toHaveStyle('width: 64px')
+    expect(button).toHaveStyle('height: 64px')
+    expect(button).toHaveStyle('border-radius: 50%')
+  })
+
+  it('Should have "DANGER_COLOR" color is we pass the variant "danger"', () => {
     const { getByRole } = setup({ variant: 'danger' })
     const button = getByRole('button')
     expect(button).toHaveStyle(`background-color: ${DANGER_COLOR}`)
+  })
+
+  it("Should have 'BACKGROUND_SECONDARY_COLOR' as background color is we pass the variant 'secondary'", () => {
+    const { getByRole } = setup({ variant: 'secondary' })
+    const button = getByRole('button')
+    expect(button).toHaveStyle(
+      `background-color: ${BACKGROUND_SECONDARY_COLOR}`
+    )
   })
 })
