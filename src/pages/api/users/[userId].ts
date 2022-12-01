@@ -12,7 +12,6 @@ const handler = async (req: any, res: any) => {
       // Get user by ID
       try {
         const doc = await getUser(userId)
-        console.log('🚀 ~ handler ~ doc', doc)
         res.status(200).json(doc)
       } catch (error) {
         res.status(500).json({ success: false, error })
