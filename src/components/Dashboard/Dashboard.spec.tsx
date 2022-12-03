@@ -67,13 +67,22 @@ describe('<Dashboard />', () => {
     })
   })
 
-  test('should show posts data', async () => {
+  it('should show posts data', async () => {
     const { getByText } = render(<Dashboard />)
     getData.mockResolvedValue(posts)
 
     await waitFor(() => {
       const title = getByText('title 1')
       expect(title).toBeInTheDocument()
+    })
+  })
+
+  it("should show 4 skeletons if we dont' get the posts data", async () => {
+    const { getAllByTestId } = render(<Dashboard />)
+
+    await waitFor(() => {
+      const skeleton = getAllByTestId('skeleton')
+      expect(skeleton.length).toBe(4)
     })
   })
 })

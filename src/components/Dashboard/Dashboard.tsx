@@ -78,7 +78,7 @@ export const Dashboard: NextPage = () => {
               </SCPostContainer>
             ))
           : skeletons.map(skeleton => (
-              <SCPostContainer key={skeleton.id}>
+              <SCPostContainer key={skeleton.id} data-testid="skeleton">
                 <PostPreviewSkeleton />
                 <SCSeparator />
               </SCPostContainer>
