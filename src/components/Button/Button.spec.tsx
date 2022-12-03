@@ -70,8 +70,8 @@ describe('<Button/>', () => {
     expect(button).toHaveStyle(`background-color: ${BACKGROUND_SECONDARY_COLOR}`)
   })
 
-  it("Should have default styles if we pass a non exist variant 'tertiary'", () => {
-    const { getByRole } = setup({ variant: 'non existent' })
+  it("Should have default styles if we pass a non exist variant 'any'", () => {
+    const { getByRole } = setup({ variant: 'any' })
     const button = getByRole('button')
     expect(button).toHaveStyle(`background-color: ${BACKGROUND_SECONDARY_COLOR}`)
   })
