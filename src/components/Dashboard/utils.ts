@@ -1,10 +1,13 @@
 // Services
-import api from 'src/services/api'
+import axios from 'axios'
 
 export const getData = async () => {
-  const {
-    data: { data },
-  } = await api.get('/posts')
-  const posts = await data
-  return posts
+  try {
+    const {
+      data: { data },
+    } = await axios.get('/api/posts')
+    return data
+  } catch (error) {
+    return error
+  }
 }

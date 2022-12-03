@@ -77,6 +77,8 @@ export const SCButtonComponent = styled.button<IButtonStyles>`
           box-shadow: 4px 4px 13px ${ACCENT_COLOR};
         }
       `
-    return null
+    return css`
+      background-color: ${BACKGROUND_SECONDARY_COLOR};
+    `
   }}
 `

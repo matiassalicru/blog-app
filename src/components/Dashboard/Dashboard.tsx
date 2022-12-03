@@ -4,9 +4,14 @@ import { useRouter } from 'next/router'
 
 // Types
 import { NextPage } from 'next'
+// Auth
 import { useSession } from 'next-auth/react'
-import { AUTHENTICATED } from 'src/utils/contants'
+
+// Types
 import { IPosts } from '../PostPreviews/types'
+
+// Constants
+import { AUTHENTICATED } from '../../utils/contants'
 
 // UIComponents
 import { PostPreviewSkeleton } from '../PostPreviews/Skeleton/PostPreviewSkeleton'
@@ -28,10 +33,6 @@ import {
 
 // Utils
 import { getData } from './utils'
-
-// Auth
-
-// Constants
 
 export const Dashboard: NextPage = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -77,7 +78,7 @@ export const Dashboard: NextPage = () => {
               </SCPostContainer>
             ))
           : skeletons.map(skeleton => (
-              <SCPostContainer key={skeleton.id}>
+              <SCPostContainer key={skeleton.id} data-testid="skeleton">
                 <PostPreviewSkeleton />
                 <SCSeparator />
               </SCPostContainer>
