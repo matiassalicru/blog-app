@@ -17,13 +17,13 @@ export const Modal: React.FC<IModal> = ({
     <>
       <SCModalContainer>
         <SCModalTitle>{title}</SCModalTitle>
-        <SCModalText>{text}</SCModalText>
+        <SCModalText data-testid="text-content">{text}</SCModalText>
         <SCModalButtons>
           <Button onClick={onSubmit} text="Delete" variant={submitButtonVariant} />
           <Button onClick={onCancel} text="Cancel" variant="secondary" />
         </SCModalButtons>
       </SCModalContainer>
-      <SCModalBackdrop onClick={onCancel} />
+      <SCModalBackdrop onClick={onCancel} data-testid="modal-backdrop" />
     </>
   )
 }
