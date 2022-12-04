@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { device } from '../../utils/contants'
 import { ACCENT_COLOR } from '../../styles/constants'
 
 export const SCInfoTileContainer = styled.div`
@@ -12,6 +13,12 @@ export const SCInfoTileContainer = styled.div`
   padding: 8px;
   height: fit-content;
   max-height: 400px;
+
+  @media ${device.laptop} {
+    width: 100%;
+    margin: 0;
+    height: min-content;
+  }
 `
 
 export const SCInfoTileTitle = styled.p`
@@ -23,6 +30,12 @@ export const SCInfoTileTitle = styled.p`
   margin: 12px;
   transition: 0.3s;
   font-weight: 500;
+
+  @media ${device.laptop} {
+    padding: 10px 0 0 10px;
+    font-size: 16px;
+    margin: 0;
+  }
 `
 
 export const SCInfoTilePhoto = styled.div`
@@ -32,6 +45,12 @@ export const SCInfoTilePhoto = styled.div`
   background-image: url('https://i.ibb.co/zRFhPds/profile-Image.png');
   background-position: center;
   background-size: cover;
+
+  @media ${device.laptop} {
+    width: 5rem;
+    min-height: 5rem;
+    margin-bottom: 20px;
+  }
 `
 
 export const SCInfoTileDescription = styled.p`
@@ -41,4 +60,10 @@ export const SCInfoTileDescription = styled.p`
   width: 100%;
   text-align: center;
   padding: 0 4px;
+
+  @media ${device.laptop} {
+    padding: 0;
+    font-size: 14px;
+    margin: 0;
+  }
 `
