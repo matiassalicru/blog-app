@@ -16,7 +16,7 @@ export const Input: FunctionComponent<InputTypes> = ({
   placeholder = '',
   onChange = () => true,
 }) => {
-  const [value, setValue] = useState('')
+  const [value, setValue] = useState<string>('')
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault()
