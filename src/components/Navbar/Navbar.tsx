@@ -22,6 +22,7 @@ import {
 
 // Constants
 import { AUTHENTICATED, GITHUB_SIGN_IN, HOME_PATH, LOADING } from '../../utils/contants'
+import { Dropdown } from '../Dropdown/Dropdown'
 
 export function Navbar() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -46,7 +47,6 @@ export function Navbar() {
     }
   }
 
-  // TODO: Add dropdown menu
   return (
     <SCNavContainer>
       <SCRightContent>
@@ -72,7 +72,18 @@ export function Navbar() {
               </SCButtonLink>
             )}
           </>
-        ) : null}
+        ) : (
+          <Dropdown
+            options={[
+              {
+                id: 'id 1',
+                name: 'Portfolio',
+                onClick: () => window.open('https://matiassalicru.vercel.app', '_blank'),
+              },
+              { id: 'id 2', name: `${isAuthenticated ? 'Sign out' : 'Sign In'}`, onClick: () => onLogInOut() },
+            ]}
+          />
+        )}
       </SCLeftContent>
     </SCNavContainer>
   )
