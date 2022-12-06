@@ -4,21 +4,21 @@ import styled from 'styled-components'
 import { SCDropdownTypes } from './Dropdown.interface'
 
 export const SCDropdownContainer = styled.div<SCDropdownTypes>`
+  position: relative;
   display: flex;
-  flex-flow: column;
-  justify-content: flex-start;
   margin: ${({ isL1Open }) => (isL1Open ? '0' : '20px')};
 `
 
 export const SCDropdown = styled.div<SCDropdownTypes>`
   cursor: pointer;
   max-width: 100%;
-  opacity: ${({ isL1Open }) => (isL1Open ? 0 : 1)};
   border-radius: 10px;
   background-color: ${WHITE_COLOR};
   height: 100%;
+  font-size: 24px;
   padding: 10px;
-  margin-bottom: 1rem;
+  font-weight: 500;
+  opacity: ${({ isL1Open }) => (isL1Open ? 0 : 1)};
 
   &:active {
     color: ${ACCENT_COLOR};

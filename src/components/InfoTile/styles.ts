@@ -33,7 +33,7 @@ export const SCInfoTileTitle = styled.p`
 
   @media ${device.laptop} {
     padding: 10px 0 0 10px;
-    font-size: 16px;
+    font-size: 18px;
     margin: 0;
   }
 `
@@ -47,8 +47,8 @@ export const SCInfoTilePhoto = styled.div`
   background-size: cover;
 
   @media ${device.laptop} {
-    width: 5rem;
-    min-height: 5rem;
+    width: 5.5rem;
+    min-height: 5.5rem;
     margin-bottom: 20px;
   }
 `
@@ -62,8 +62,8 @@ export const SCInfoTileDescription = styled.p`
   padding: 0 4px;
 
   @media ${device.laptop} {
-    padding: 0;
-    font-size: 14px;
+    padding: 0 20px 10px 20px;
+    font-size: 16px;
     margin: 0;
   }
 `

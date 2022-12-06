@@ -47,6 +47,17 @@ export function Navbar() {
     }
   }
 
+  const getDropdownOptions = () => {
+    return [
+      {
+        id: 'id 1',
+        name: 'Portfolio',
+        onClick: () => window.open('https://matiassalicru.vercel.app', '_blank'),
+      },
+      { id: 'id 2', name: `${isAuthenticated ? 'Sign out' : 'Sign In'}`, onClick: () => onLogInOut() },
+    ]
+  }
+
   return (
     <SCNavContainer>
       <SCRightContent>
@@ -73,16 +84,7 @@ export function Navbar() {
             )}
           </>
         ) : (
-          <Dropdown
-            options={[
-              {
-                id: 'id 1',
-                name: 'Portfolio',
-                onClick: () => window.open('https://matiassalicru.vercel.app', '_blank'),
-              },
-              { id: 'id 2', name: `${isAuthenticated ? 'Sign out' : 'Sign In'}`, onClick: () => onLogInOut() },
-            ]}
-          />
+          <Dropdown options={getDropdownOptions()} />
         )}
       </SCLeftContent>
     </SCNavContainer>

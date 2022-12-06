@@ -21,5 +21,6 @@ export const SCIndexContent = styled.div`
     flex-direction: column-reverse;
     width: 100%;
     gap: 20px;
+    padding: 0 20px;
   }
 `

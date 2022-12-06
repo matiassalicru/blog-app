@@ -21,6 +21,7 @@ export const SCPostTitle = styled.h1`
   width: 100%;
   text-align: start;
   cursor: pointer;
+  word-break: break-all;
 `
 
 export const SCPostText = styled.p`
