@@ -4,8 +4,10 @@ import { useRouter } from 'next/router'
 // Session
 import { getSession, GetSessionParams, useSession, signOut, signIn } from 'next-auth/react'
 
+// Hooks
+import useWindowDimensions from '../../hooks/useWindowDimensions'
+
 // Styles
-import { AUTHENTICATED, GITHUB_SIGN_IN, HOME_PATH, LOADING } from 'src/utils/contants'
 import {
   SCNavContainer,
   SCLink,
@@ -19,12 +21,15 @@ import {
 } from './styles'
 
 // Constants
+import { AUTHENTICATED, GITHUB_SIGN_IN, HOME_PATH, LOADING } from '../../utils/contants'
+import { Dropdown } from '../Dropdown/Dropdown'
 
 export function Navbar() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const { data, status } = useSession()
   const router = useRouter()
+  const { width } = useWindowDimensions()
 
   useEffect(() => {
     setIsAuthenticated(status === AUTHENTICATED)
@@ -42,6 +47,17 @@ export function Navbar() {
     }
   }
 
+  const getDropdownOptions = () => {
+    return [
+      {
+        id: 'id 1',
+        name: 'Portfolio',
+        onClick: () => window.open('https://matiassalicru.vercel.app', '_blank'),
+      },
+      { id: 'id 2', name: `${isAuthenticated ? 'Sign out' : 'Sign In'}`, onClick: () => onLogInOut() },
+    ]
+  }
+
   return (
     <SCNavContainer>
       <SCRightContent>
@@ -51,18 +67,24 @@ export function Navbar() {
         </SCButtonLink>
       </SCRightContent>
       <SCLeftContent>
-        <SCLink href="https://matiassalicru.vercel.app" target="_blank" rel="noopener noreferrer">
-          Go to portfolio
-        </SCLink>
-        {isLoading ? (
-          <>Skeleton</>
+        {width > 1024 ? (
+          <>
+            <SCLink href="https://matiassalicru.vercel.app" target="_blank" rel="noopener noreferrer">
+              Go to portfolio
+            </SCLink>
+            {isLoading ? (
+              <>Skeleton</>
+            ) : (
+              <SCButtonLink>
+                <SCSignOut onClick={onLogInOut}>
+                  <SCSignTitle>{isAuthenticated ? 'Sign out' : 'Sign In'}</SCSignTitle>
+                  {isAuthenticated && data && <SCUserImage loading="lazy" src={data.user?.image || ''} />}
+                </SCSignOut>
+              </SCButtonLink>
+            )}
+          </>
         ) : (
-          <SCButtonLink>
-            <SCSignOut onClick={onLogInOut}>
-              <SCSignTitle>{isAuthenticated ? 'Sign out' : 'Sign In'}</SCSignTitle>
-              {isAuthenticated && data && <SCUserImage loading="lazy" src={data.user?.image || ''} />}
-            </SCSignOut>
-          </SCButtonLink>
+          <Dropdown options={getDropdownOptions()} />
         )}
       </SCLeftContent>
     </SCNavContainer>

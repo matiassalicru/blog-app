@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import { ACCENT_COLOR } from '../../styles/constants'
 
 export const SCDashboardContainer = styled.div`
-  position: relative;
   background-color: #f1f1f1;
   display: flex;
   flex-direction: column;
