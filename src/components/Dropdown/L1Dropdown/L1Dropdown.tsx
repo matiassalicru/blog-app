@@ -6,7 +6,7 @@ import { L1DropdownContainer, SCOption } from './styles'
 
 export const L1Dropdown = ({ options }: IDropdown) => {
   return (
-    <L1DropdownContainer>
+    <L1DropdownContainer data-testid="l1-dropdown-container">
       {options.map(({ id, name, onClick }) => (
         <SCOption key={id} onClick={onClick}>
           {name}

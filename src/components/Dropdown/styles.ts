@@ -1,5 +1,5 @@
-import { ACCENT_COLOR, WHITE_COLOR } from 'src/styles/constants'
 import styled from 'styled-components'
+import { ACCENT_COLOR, WHITE_COLOR } from '../../styles/constants'
 // Types
 import { SCDropdownTypes } from './Dropdown.interface'
 

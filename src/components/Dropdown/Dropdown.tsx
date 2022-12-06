@@ -20,12 +20,12 @@ export const Dropdown = ({ options }: IDropdown) => {
   return (
     <>
       <SCDropdownContainer isL1Open={isL1Open}>
-        <SCDropdown onClick={toggleL1Dropdown} isL1Open={isL1Open}>
+        <SCDropdown onClick={toggleL1Dropdown} isL1Open={isL1Open} data-testid="dropdown-button">
           Menu
         </SCDropdown>
         {isL1Open && <L1Dropdown options={options} />}
       </SCDropdownContainer>
-      {isL1Open && <SCDropdownBackdrop onClick={closeDropdown} data-testid="modal-backdrop" />}
+      {isL1Open && <SCDropdownBackdrop onClick={closeDropdown} data-testid="dropdown-backdrop" />}
     </>
   )
 }
