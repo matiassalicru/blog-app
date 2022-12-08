@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
 // Session
-import { getSession, GetSessionParams, useSession, signOut, signIn } from 'next-auth/react'
+import { useSession, signOut, signIn } from 'next-auth/react'
 
 // Hooks
 import useWindowDimensions from '../../hooks/useWindowDimensions'
@@ -22,9 +22,11 @@ import {
 
 // Constants
 import { AUTHENTICATED, GITHUB_SIGN_IN, HOME_PATH, LOADING } from '../../utils/contants'
+
+// Components
 import { Dropdown } from '../Dropdown/Dropdown'
 
-export function Navbar() {
+export const Navbar = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const { data, status } = useSession()
@@ -89,13 +91,4 @@ export function Navbar() {
       </SCLeftContent>
     </SCNavContainer>
   )
-}
-
-export const getServerSideProps = async (context: GetSessionParams) => {
-  const session = await getSession(context)
-  return {
-    props: {
-      session,
-    },
-  }
 }

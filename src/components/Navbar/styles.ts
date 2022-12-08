@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { BACKGROUND_SECONDARY_COLOR } from 'src/styles/constants'
+import { BACKGROUND_SECONDARY_COLOR } from '../../styles/constants'
 
 export const SCNavContainer = styled.div`
   display: flex;
