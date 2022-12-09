@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 // Services
-import api from '../../../services/api'
+import axios from 'axios'
 // Types
 import { IUser } from '../../PostPreviews/types'
 // Constants
@@ -13,7 +13,7 @@ export const useUser = (status: string) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>()
 
   const getUserData = async (userId: string) => {
-    const { data: authorData } = await api.get(`/users/${userId}`)
+    const { data: authorData } = await axios.get(`/users/${userId}`)
     setAuthor(authorData)
     setIsAuthorLoading(false)
     setIsAuthenticated(status === AUTHENTICATED)
