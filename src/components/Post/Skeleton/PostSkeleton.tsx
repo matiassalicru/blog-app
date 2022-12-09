@@ -12,7 +12,7 @@ import {
 
 export const PostSkeleton = () => {
   return (
-    <SCSkeletonContainer>
+    <SCSkeletonContainer data-testid="post-skeleton">
       <SCSkeletonAuthor />
       <SCSkeletonTitle />
       <SCSkeletonContent />

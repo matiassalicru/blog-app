@@ -17,7 +17,7 @@ export const Modal: React.FC<IModal> = ({
     <>
       <SCModalContainer>
         <SCModalTitle>{title}</SCModalTitle>
-        <SCModalText data-testid="text-content">{text}</SCModalText>
+        <SCModalText data-testid="modal-text-content">{text}</SCModalText>
         <SCModalButtons>
           <Button onClick={onSubmit} text="Delete" variant={submitButtonVariant} />
           <Button onClick={onCancel} text="Cancel" variant="secondary" />

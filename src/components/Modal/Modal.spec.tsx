@@ -47,7 +47,7 @@ describe('<Modal />', () => {
   test('should render "I\'m just a love machine" title', async () => {
     const { getByTestId } = setup({ text: "I'm just a love machine" })
 
-    const text = getByTestId('text-content')
+    const text = getByTestId('modal-text-content')
     expect(text).toHaveTextContent("I'm just a love machine")
   })
 })
