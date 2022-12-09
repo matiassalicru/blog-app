@@ -13,7 +13,7 @@ export const useUser = (status: string) => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>()
 
   const getUserData = async (userId: string) => {
-    const { data: authorData } = await axios.get(`/users/${userId}`)
+    const { data: authorData } = await axios.get(`/api/users/${userId}`)
     setAuthor(authorData)
     setIsAuthorLoading(false)
     setIsAuthenticated(status === AUTHENTICATED)
