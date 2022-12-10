@@ -1,7 +1,7 @@
 // jest.config.js
 
 module.exports = {
-  collectCoverageFrom: ['./src/**'],
+  collectCoverageFrom: ['./src/**/*.tsx', '!**/src/pages/*.tsx'],
   moduleNameMapper: {
     /* Handle CSS imports (with CSS modules)
     https://jestjs.io/docs/webpack#mocking-css-modules */
@@ -14,7 +14,7 @@ module.exports = {
     https://jestjs.io/docs/webpack#handling-static-assets */
     '^.+\\.(jpg|jpeg|png|gif|webp|avif|svg)$': '<rootDir>/__mocks__/fileMock.js',
   },
-  testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/.next/'],
+  testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/.next/', '<rootDir>/src/pages/'],
   testEnvironment: 'jsdom',
   transform: {
     /* Use babel-jest to transpile tests with the next/babel preset

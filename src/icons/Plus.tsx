@@ -15,18 +15,9 @@ export function Plus({
   variant = 'regular',
 }: IconsProps): ReactElement {
   return (
-    <svg
-      width={width}
-      height={height}
-      className={className}
-      viewBox='0 0 20 20'>
-      <g
-        id='PlusIcon'
-        stroke='none'
-        strokeWidth='1'
-        fill={color}
-        fillRule='evenodd'>
-        <path d={iconType[variant]} fill={color} fillRule='nonzero' />
+    <svg data-testid="plus-icon" width={width} height={height} className={className} viewBox="0 0 20 20">
+      <g id="PlusIcon" stroke="none" strokeWidth="1" fill={color} fillRule="evenodd">
+        <path d={iconType[variant]} fill={color} fillRule="nonzero" />
       </g>
     </svg>
   )

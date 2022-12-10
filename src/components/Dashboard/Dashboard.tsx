@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
 // Types
-import { NextPage } from 'next'
+import { NextComponentType, NextPageContext } from 'next'
 // Auth
 import { useSession } from 'next-auth/react'
 
@@ -34,7 +34,7 @@ import {
 // Utils
 import { getData } from './utils'
 
-export const Dashboard: NextPage = () => {
+export const Dashboard: NextComponentType<NextPageContext> = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [posts, setPosts] = useState<IPosts[]>([])
   const [skeletons] = useState([{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }])
