@@ -77,11 +77,7 @@ const CreatePost: NextPage = () => {
     <SCNewPostContainer>
       <Button onClick={() => router.push(HOME_PATH)} text="Volver" />
       <Input type="text" placeholder="Write a shiny title" onChange={value => setTitle(value)} />
-      <Textarea
-        placeholder="Write your thoughts here"
-        value={description}
-        onChange={e => setDescription(e?.target?.value)}
-      />
+      <Textarea placeholder="Write your thoughts here" onChange={value => setDescription(value)} />
       <SCButtonArea>
         <Button onClick={onSubmitPost} text="POST" disabled={title.length < 1 || description.length < 2} />
       </SCButtonArea>
