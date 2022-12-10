@@ -5,7 +5,7 @@ import { useRouter } from 'next/router'
 import { useSession, signOut, signIn } from 'next-auth/react'
 
 // Hooks
-import useWindowDimensions from '../../hooks/useWindowDimensions'
+import { useWindowDimensions } from '../../hooks/useWindowDimensions'
 
 // Styles
 import {

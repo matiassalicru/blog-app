@@ -1,7 +1,8 @@
-import BasicLayout from 'src/layout/Basic'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import { SessionProvider } from 'next-auth/react'
+// Components
+import { BasicLayout } from '../layout/Basic'
 import { Navbar } from '../components/Navbar/Navbar'
 
 function MyApp({ Component, pageProps }: AppProps) {

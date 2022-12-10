@@ -5,7 +5,7 @@ import { useSession, signIn, signOut } from 'next-auth/react'
 // Components
 import { Navbar } from './Navbar'
 // Hooks
-import useWindowDimensions from '../../hooks/useWindowDimensions'
+import { useWindowDimensions } from '../../hooks/useWindowDimensions'
 
 jest.mock('next-auth/react')
 jest.mock('../../hooks/useWindowDimensions')
