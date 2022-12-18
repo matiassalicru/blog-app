@@ -1,7 +1,9 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 // Constants
 import { PRIMARY_COLOR, SECONDARY_COLOR, BACKGROUND_SECONDARY_COLOR } from '../../styles/constants'
+// Types
+import { IModalBackdrop } from './Modal.interface'
 
 export const SCModalContainer = styled.div`
   position: absolute;
@@ -48,7 +50,7 @@ export const SCModalButtons = styled.div`
   width: 100%;
 `
 
-export const SCModalBackdrop = styled.div`
+export const SCModalBackdrop = styled.div<IModalBackdrop>`
   height: 100%;
   position: fixed;
   left: 0;
@@ -57,4 +59,9 @@ export const SCModalBackdrop = styled.div`
   z-index: 2;
   opacity: 0.3;
   background: ${PRIMARY_COLOR};
+  ${({ disabled }) =>
+    disabled &&
+    css`
+      pointer-events: none;
+    `}
 `

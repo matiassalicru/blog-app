@@ -5,6 +5,9 @@ import { SessionProvider } from 'next-auth/react'
 import { BasicLayout } from '../layout/Basic'
 import { Navbar } from '../components/Navbar/Navbar'
 
+// Context
+import AlertContextProvider from '../context/AlertContext/AlertContext'
+
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <BasicLayout>
@@ -15,8 +18,10 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
 
       <SessionProvider>
-        <Navbar />
-        <Component {...pageProps} />
+        <AlertContextProvider>
+          <Navbar />
+          <Component {...pageProps} />
+        </AlertContextProvider>
       </SessionProvider>
     </BasicLayout>
   )

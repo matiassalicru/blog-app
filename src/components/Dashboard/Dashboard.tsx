@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/indent */
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useContext, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
 // Types
@@ -34,11 +34,17 @@ import {
 // Utils
 import { getData } from './utils'
 
+// Context
+import { AlertContext } from '../../context/AlertContext/AlertContext'
+import { Alert } from '../Alert/Alert'
+import { WHITE_COLOR } from '../../styles/constants'
+
 export const Dashboard: NextComponentType<NextPageContext> = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false)
   const [posts, setPosts] = useState<IPosts[]>([])
   const [skeletons] = useState([{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }])
   const { status } = useSession()
+  const { alertInfo } = useContext(AlertContext)
 
   const getPosts = useCallback(async () => {
     const postsData = await getData()
@@ -83,6 +89,14 @@ export const Dashboard: NextComponentType<NextPageContext> = () => {
                 <SCSeparator />
               </SCPostContainer>
             ))}
+        {alertInfo.show && (
+          <Alert
+            text="The post has been deleted"
+            icon={<Plus height="18px" width="18px" color={WHITE_COLOR} />}
+            time={alertInfo.time}
+            variant={alertInfo.variant}
+          />
+        )}
       </SCDashboardContainer>
     </>
   )

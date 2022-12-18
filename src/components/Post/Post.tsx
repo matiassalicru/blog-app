@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import React, { useContext, useEffect, useMemo, useState } from 'react'
 
 // Next
 import { NextPage } from 'next'
@@ -8,6 +8,7 @@ import { useSession } from 'next-auth/react'
 import { Button } from '../Button/Button'
 import { Modal } from '../Modal/Modal'
 import { PostSkeleton } from './Skeleton/PostSkeleton'
+
 // Styles
 import {
   SCPostContent,
@@ -22,8 +23,13 @@ import {
 import { usePost } from './hooks/usePost'
 import { useUser } from './hooks/useUser'
 
+// Context
+import { AlertContext } from '../../context/AlertContext/AlertContext'
+
 export const Post: NextPage = () => {
   const [showModal, setShowModal] = useState<boolean>(false)
+  const { alertInfo } = useContext(AlertContext)
+
   const { query, push } = useRouter()
   const { status, data: userData } = useSession()
 
@@ -64,6 +70,7 @@ export const Post: NextPage = () => {
               text="Are you sure about deleting your post?"
               onCancel={handleCloseModal}
               onSubmit={handleDeletePost}
+              disableButtons={alertInfo?.show}
             />
           )}
           <SCAuthorContainer>
@@ -78,8 +85,10 @@ export const Post: NextPage = () => {
           <SCPostTitle>{post?.title}</SCPostTitle>
           <SCPostText>{post?.text}</SCPostText>
           <SCDeleteButtonContainer>
-            <Button onClick={onBackButtonClick} text="Back" variant="secondary" />
-            {isUserPost && isAuthenticated && <Button onClick={onDeletePost} text="Delete post" variant="danger" />}
+            <Button onClick={onBackButtonClick} text="Back" variant="secondary" disabled={alertInfo?.show} />
+            {isUserPost && isAuthenticated && (
+              <Button onClick={onDeletePost} text="Delete post" variant="danger" disabled={alertInfo?.show} />
+            )}
           </SCDeleteButtonContainer>
         </>
       ) : (
