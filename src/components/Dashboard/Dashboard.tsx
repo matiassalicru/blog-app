@@ -37,7 +37,6 @@ import { getData } from './utils'
 // Context
 import { AlertContext } from '../../context/AlertContext/AlertContext'
 import { Alert } from '../Alert/Alert'
-import { WHITE_COLOR } from '../../styles/constants'
 
 export const Dashboard: NextComponentType<NextPageContext> = () => {
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false)
@@ -90,12 +89,7 @@ export const Dashboard: NextComponentType<NextPageContext> = () => {
               </SCPostContainer>
             ))}
         {alertInfo.show && (
-          <Alert
-            text="The post has been deleted"
-            icon={<Plus height="18px" width="18px" color={WHITE_COLOR} />}
-            time={alertInfo.time}
-            variant={alertInfo.variant}
-          />
+          <Alert text={alertInfo.text} icon={alertInfo.icon} time={alertInfo.time} variant={alertInfo.variant} />
         )}
       </SCDashboardContainer>
     </>

@@ -1,9 +1,11 @@
 import { ReactElement } from 'react'
 import { IconsProps } from '../../icons/icons.interface'
 
+type AlertVariant = 'primary' | 'secundary' | 'danger' | null
+
 export interface IAlert {
   text: string
-  variant?: string
+  variant?: AlertVariant
   time?: number
   icon?: ReactElement<IconsProps>
 }

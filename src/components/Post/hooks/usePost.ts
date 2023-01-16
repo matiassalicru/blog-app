@@ -27,7 +27,13 @@ export const usePost = () => {
     const {
       data: { ok },
     } = await axios.delete(`/api/posts/${postId}`)
-    if (ok) setAlertInfo((prev: IAlertContext) => ({ ...prev, show: true }))
+    if (ok)
+      setAlertInfo((prev: IAlertContext) => ({
+        ...prev,
+        show: true,
+        text: 'The post has been deleted!',
+        variant: 'danger',
+      }))
     setTimeout(() => {
       push(HOME_PATH)
     }, 1000)
