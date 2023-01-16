@@ -1,6 +1,8 @@
 import { fireEvent, render } from '@testing-library/react'
 import { useContext } from 'react'
+// Context
 import AlertContextProvider, { AlertContext } from './AlertContext'
+// Types
 import { IAlertContext } from './AlertContext.interface'
 
 jest.useFakeTimers()

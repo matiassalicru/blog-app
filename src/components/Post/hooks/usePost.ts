@@ -5,10 +5,11 @@ import axios from 'axios'
 import { useRouter } from 'next/router'
 // Types
 import { IPosts } from '../../PostPreviews/types'
+import { IAlertContext } from '../../../context/AlertContext/AlertContext.interface'
 // Constants
 import { HOME_PATH } from '../../../utils/contants'
+// Context
 import { AlertContext } from '../../../context/AlertContext/AlertContext'
-import { IAlertContext } from '../../../context/AlertContext/AlertContext.interface'
 
 export const usePost = () => {
   const [post, setPost] = useState<IPosts>()

@@ -1,4 +1,5 @@
 import { ReactElement } from 'react'
+// Types
 import { IconsProps } from '../../icons/icons.interface'
 
 type AlertVariant = 'primary' | 'secundary' | 'danger' | null

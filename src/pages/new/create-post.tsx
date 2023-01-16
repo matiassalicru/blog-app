@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
 // Types
@@ -17,16 +17,18 @@ import { AUTHENTICATED, GITHUB_SIGN_IN, HOME_PATH } from 'src/utils/contants'
 import { Button } from '../../components/Button/Button'
 import { Input } from '../../components/Input/Input'
 import { Textarea } from '../../components/Textarea/Textarea'
-
 // Styles
 import { SCNewPostContainer, SCButtonArea } from '../../styles/create-post/styles'
+// Context
+import { AlertContext } from '../../context/AlertContext/AlertContext'
+import { IAlertContext } from '../../context/AlertContext/AlertContext.interface'
 
 const CreatePost: NextPage = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const router = useRouter()
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
-
+  const { setAlertInfo } = useContext(AlertContext)
   const { status, data: userData } = useSession()
 
   useEffect(() => {
@@ -61,15 +63,24 @@ const CreatePost: NextPage = () => {
       const newPostIsCreated = await createNewPost(post)
 
       if (newPostIsCreated) {
-        // TODO: Create a better alert
-        alert('se creó el post con éxito')
+        setAlertInfo((prev: IAlertContext) => ({
+          ...prev,
+          show: true,
+          variant: 'primary',
+          text: 'The post has been created succesfully',
+        }))
       }
 
       setTitle('')
       setDescription('')
       router.push('/')
     } else {
-      alert('error')
+      setAlertInfo((prev: IAlertContext) => ({
+        ...prev,
+        show: true,
+        variant: 'danger',
+        text: 'Something wrong happened',
+      }))
     }
   }
 
