@@ -3,7 +3,11 @@ import { render } from '@testing-library/react'
 // Components
 import { Plus } from '../../icons/Plus'
 import { Alert } from './Alert'
+
+// Constants
 import { DANGER_COLOR } from '../../styles/constants'
+
+// Utils
 import { rgba2hex } from '../../utils/utils'
 
 const setup = (mock = {}) => render(<Alert text="We were on a break!!!" {...mock} />)

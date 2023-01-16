@@ -36,6 +36,8 @@ import { getData } from './utils'
 
 // Context
 import { AlertContext } from '../../context/AlertContext/AlertContext'
+
+// Components
 import { Alert } from '../Alert/Alert'
 
 export const Dashboard: NextComponentType<NextPageContext> = () => {
