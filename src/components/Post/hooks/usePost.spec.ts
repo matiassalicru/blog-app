@@ -27,7 +27,7 @@ const posts = {
 ;(mockAxios.delete as any).mockImplementation(() => Promise.resolve({ data: { ok: true } }))
 
 const setup = () => {
-  return renderHook(() => usePost())
+  return renderHook(() => usePost(jest.fn()))
 }
 describe('usePost Hook', () => {
   test('getPostData', async () => {

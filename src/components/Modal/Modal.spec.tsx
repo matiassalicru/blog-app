@@ -50,4 +50,22 @@ describe('<Modal />', () => {
     const text = getByTestId('modal-text-content')
     expect(text).toHaveTextContent("I'm just a love machine")
   })
+
+  test('Buttons should be disabled if disabled prop is true', async () => {
+    const onSubmitMock = jest.fn()
+    const { getByRole } = setup({ onSubmit: onSubmitMock, text: "I'm just a love machine", disableButtons: true })
+
+    const submitButton = getByRole('button', { name: 'Delete' })
+    const cancelButton = getByRole('button', { name: 'Cancel' })
+    expect(submitButton).toBeDisabled()
+    expect(cancelButton).toBeDisabled()
+  })
+
+  test('Backdrop should be disabled if disabled prop is true', async () => {
+    const { getByTestId } = setup({ text: "I'm just a love machine", disableButtons: true })
+
+    const modalBackdrop = getByTestId('modal-backdrop')
+    const style = window.getComputedStyle(modalBackdrop)
+    expect(style.pointerEvents).toBe('none')
+  })
 })

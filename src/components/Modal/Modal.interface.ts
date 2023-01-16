@@ -6,4 +6,9 @@ export interface IModal {
   onCancel: () => void
   onSubmit: () => void
   submitButtonVariant?: ButtonVariants
+  disableButtons?: boolean
+}
+
+export interface IModalBackdrop {
+  disabled: boolean
 }

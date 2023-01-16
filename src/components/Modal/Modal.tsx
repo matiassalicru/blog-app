@@ -11,6 +11,7 @@ export const Modal: React.FC<IModal> = ({
   title = 'Title',
   onSubmit,
   onCancel,
+  disableButtons = false,
   submitButtonVariant = 'danger',
 }) => {
   return (
@@ -19,11 +20,11 @@ export const Modal: React.FC<IModal> = ({
         <SCModalTitle>{title}</SCModalTitle>
         <SCModalText data-testid="modal-text-content">{text}</SCModalText>
         <SCModalButtons>
-          <Button onClick={onSubmit} text="Delete" variant={submitButtonVariant} />
-          <Button onClick={onCancel} text="Cancel" variant="secondary" />
+          <Button onClick={onSubmit} text="Delete" variant={submitButtonVariant} disabled={disableButtons} />
+          <Button onClick={onCancel} text="Cancel" variant="secondary" disabled={disableButtons} />
         </SCModalButtons>
       </SCModalContainer>
-      <SCModalBackdrop onClick={onCancel} data-testid="modal-backdrop" />
+      <SCModalBackdrop onClick={onCancel} data-testid="modal-backdrop" disabled={disableButtons} />
     </>
   )
 }

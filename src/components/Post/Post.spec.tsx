@@ -11,13 +11,13 @@ const useUser = jest.spyOn(require('./hooks/useUser'), 'useUser')
 usePost.mockImplementation(() => ({
   post: { user_id: '666' },
   isPostLoading: false,
-  getPostData: jest.fn,
-  handleDeletePost: jest.fn,
+  getPostData: jest.fn(),
+  handleDeletePost: jest.fn(),
 }))
 
 useUser.mockImplementation(() => ({
   author: { name: 'Michael Scott', email: 'mscott@dundler.miffin' },
-  getUserData: jest.fn,
+  getUserData: jest.fn(),
   isAuthorLoading: false,
   isAuthenticated: true,
   setIsAuthenticated: jest.fn(),
@@ -122,6 +122,20 @@ describe('<Post>', () => {
     expect(modalComponent).not.toBeInTheDocument()
   })
 
+  test('should show alert when click on Delete button', async () => {
+    const { getByText, queryByTestId, getAllByRole } = setup()
+    const deleteButton = getAllByRole('button')
+    expect(deleteButton[1]).toHaveTextContent('Delete')
+
+    fireEvent.click(deleteButton[1])
+    const modalComponent = queryByTestId('modal-text-content')
+    expect(modalComponent).toBeInTheDocument()
+
+    const modalDeleteButton = getByText('Delete')
+    fireEvent.click(modalDeleteButton)
+    expect(modalComponent).toBeInTheDocument()
+  })
+
   test("should render Legacy user as author name if the user doesn't exists", () => {
     useUser.mockImplementation(() => ({
       author: null,
@@ -142,16 +156,16 @@ describe('<Post>', () => {
     usePost.mockImplementation(() => ({
       post: null,
       isPostLoading: true,
-      getPostData: jest.fn,
-      handleDeletePost: jest.fn,
+      getPostData: jest.fn(),
+      handleDeletePost: jest.fn(),
     }))
 
     useUser.mockImplementation(() => ({
       author: {},
-      getUserData: jest.fn,
+      getUserData: jest.fn(),
       isAuthorLoading: true,
       isAuthenticated: false,
-      setIsAuthenticated: jest.fn,
+      setIsAuthenticated: jest.fn(),
     }))
     const { getByTestId } = setup()
 
