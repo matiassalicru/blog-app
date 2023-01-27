@@ -1,15 +1,16 @@
 import styled from 'styled-components'
 
 // Constants
-import { ACCENT_COLOR } from '../../styles/constants'
+import { ACCENT_COLOR, WHITE_COLOR } from '../../styles/constants'
 
 export const SCDashboardContainer = styled.div`
-  background-color: #f1f1f1;
+  background-color: ${WHITE_COLOR};
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   border-radius: 16px;
+  box-shadow: 0 2px 5px ${WHITE_COLOR};
   padding: 20px;
 `
 

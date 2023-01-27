@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { BACKGROUND_SECONDARY_COLOR } from '../../styles/constants'
+import { BACKGROUND_SECONDARY_COLOR, PRIMARY_COLOR } from '../../styles/constants'
 
 export const SCNavContainer = styled.div`
   display: flex;
@@ -12,7 +12,7 @@ export const SCLink = styled.a`
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: inherit;
+  color: ${BACKGROUND_SECONDARY_COLOR};
   font-size: 24px;
   padding: 16px;
   border-radius: 12px;
@@ -23,6 +23,7 @@ export const SCLink = styled.a`
   max-height: 72px;
 
   &:hover {
+    color: ${PRIMARY_COLOR};
     background-color: ${BACKGROUND_SECONDARY_COLOR};
   }
 `
@@ -62,7 +63,7 @@ export const SCButtonLink = styled.div`
   display: flex;
   align-items: center;
   text-decoration: none;
-  color: inherit;
+  color: ${BACKGROUND_SECONDARY_COLOR};
   font-size: 24px;
   padding: 16px;
   border-radius: 12px;
@@ -73,6 +74,7 @@ export const SCButtonLink = styled.div`
   max-height: 72px;
 
   &:hover {
+    color: ${PRIMARY_COLOR};
     background-color: ${BACKGROUND_SECONDARY_COLOR};
   }
 `

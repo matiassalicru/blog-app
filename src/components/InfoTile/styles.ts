@@ -13,6 +13,7 @@ export const SCInfoTileContainer = styled.div`
   padding: 8px;
   height: fit-content;
   max-height: 400px;
+  box-shadow: 0 2px 10px ${ACCENT_COLOR};
 
   @media ${device.laptop} {
     width: 100%;
