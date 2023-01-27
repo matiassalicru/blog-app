@@ -14,13 +14,12 @@ import {
 import { IButtonStyles } from './Button.interface'
 
 export const SCButtonComponent = styled.button<IButtonStyles>`
-  border: 1px solid ${SECONDARY_COLOR};
+  border: none;
   border-radius: 8px;
   padding: 10px 20px;
   text-align: center;
   cursor: pointer;
   width: fit-content;
-  box-shadow: 2px 2px 2px 1px ${SECONDARY_COLOR};
   font-weight: 500;
   letter-spacing: 2px;
   transition: transform 0.2s, box-shadow 0.2s;
